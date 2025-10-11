@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
 
 :root {
   --primary-color: #1286DA;
@@ -7,7 +7,7 @@
   --accent2-color: #96D82C;
 
   --heading-font: "Cinzel", serif;
-  --paragraph-font: "Aboreto", cursive;
+  --paragraph-font: "Merriweather", serif;
 
   --headline-color-on-white: #1286DA;
   --headline-color-on-color: white;
@@ -21,7 +21,7 @@
 }
 
 #content {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   background-color: white;
   font-family: var(--paragraph-font);
@@ -29,36 +29,36 @@
 
 #hero_img {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   height: auto;
   display: block;
   margin: 0 auto;
 }
 
 #logo {
-  width: 60px;
+  width: 80px;
   height: auto;
 }
 
 .card-img {
-  width: 100%;
-  max-width: 400px; 
+  width: 600px;
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
 }
 
 .icon {
-  width: 40px;
+  width: 80px;
   height: auto;
   display: block;
   margin: 10px auto;
 }
 
 .socials img {
-  width: 30px;
+  width: 40px;
   height: auto;
-  margin: 5px;
+  margin: 10px;
 }
 
 header {
@@ -100,15 +100,11 @@ nav a:hover {
   background-color: rgba(18, 134, 218, 0.6);
   padding: 20px;
   border-radius: 10px;
-  max-width: 90%;
-}
-
-.home-title, h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
 }
 
 .home-title {
-  font-size: 2.2rem;
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
 }
 
 .button-box .button {
@@ -128,6 +124,11 @@ main section {
   text-align: center;
 }
 
+#background {
+  height: 725px;
+  background-color: var(--secondary-color); /* changed from white to secondary color */
+}
+
 footer {
   background-color: var(--primary-color);
   color: var(--headline-color-on-color);
@@ -144,8 +145,4 @@ footer a {
 footer a:hover {
   color: var(--accent2-color);
   text-decoration: underline;
-}
-
-#background {
-  height: 725px;
 }
