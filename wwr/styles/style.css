@@ -69,20 +69,22 @@ nav a:hover {
 #hero {
   position: relative;
   width: 100%;
+  height: 500px;            
   text-align: center;
+  overflow: hidden;
 }
 
 #hero_box {
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
 #hero_img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;        
   display: block;
-  margin-bottom: 20px;
-  padding: 10px;
 }
 
 #hero-msg {
@@ -90,12 +92,13 @@ nav a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(18, 134, 218, 0.6);
+  background-color: rgba(18, 134, 218, 0.6); 
   color: white;
   padding: 30px 40px;
   border-radius: 10px;
   max-width: 80%;
   text-align: center;
+  z-index: 2;               
   box-sizing: border-box;
 }
 
