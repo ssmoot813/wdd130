@@ -5,14 +5,13 @@
   --secondary-color: #FFD864;
   --accent1-color: #B32F07;
   --accent2-color: #96D82C;
-
   --heading-font: 'Cinzel', 'Georgia', serif;
   --paragraph-font: 'Merriweather', Arial, serif;
 
   --headline-color-on-white: #1286DA;
   --headline-color-on-color: white;
   --paragraph-color-on-white: #1286DA;
-  --paragraph-color-on-color: white;
+  --paragraph-color-on-color: var(--primary-color);
   --paragraph-background-color: #1286DA;
   --nav-link-color: #96D82C;
   --nav-background-color: #AB4677;
@@ -45,8 +44,8 @@ header {
 .logo img {
   width: 80px;
   height: auto;
-  margin: 10px;
   display: block;
+  margin: 10px;
 }
 
 nav a {
@@ -100,7 +99,6 @@ nav a:hover {
   text-align: center;
   z-index: 2;
   box-sizing: border-box;
-  margin: 50px;
 }
 
 #hero-msg h1 {
