@@ -43,10 +43,21 @@ header {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.logo img {
   width: 80px;
   height: auto;
-  margin: 10px;
-  padding-top: 5px;
+  display: block;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -197,4 +208,69 @@ footer .socials img {
   height: auto;
   margin: 10px;
   padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  nav a {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+  }
+
+  .logo img {
+    width: 60px;
+  }
+
+  #hero {
+    height: 350px;
+  }
+
+  #hero-msg {
+    padding: 20px;
+  }
+
+  #hero-msg h1 {
+    font-size: 1.5em;
+  }
+
+  #hero-msg h4 {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    width: 50px;
+  }
+
+  #hero {
+    height: 250px;
+  }
+
+  #hero-msg {
+    padding: 15px;
+  }
+
+  #hero-msg h1 {
+    font-size: 1.2em;
+  }
+
+  #hero-msg h4 {
+    font-size: 0.9em;
+  }
+
+  nav a {
+    padding: 8px 12px;
+    margin: 3px;
+    font-size: 14px;
+  }
 }
