@@ -1,14 +1,15 @@
-/* CSS - Name: "positionstyles.css" */
+/* positionstyles.css
+   Updated to match the assignment descriptions given by the user.
+*/
 
-/* ---------- Activity 1 ---------- */
-/* Two equal columns, gap, center small boxes; red/blue span both columns */
+/* ---------- Activity 1 (keep as working grid) ---------- */
 .content1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   gap: 20px;
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 40px;
 }
 .red1 {
   width: 100%;
@@ -33,14 +34,13 @@
   grid-column: 1 / 3;
 }
 
-/* ---------- Activity 2 ---------- */
-/* Staggered / overlapping squares. Use a grid with 50px columns (hint provided). */
+/* ---------- Activity 2 (keep centered stagger) ---------- */
 .content2 {
   display: grid;
   grid-template-columns: 50px 50px 50px 50px 50px;
   width: 250px;
   height: 250px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   position: relative;
 }
 .red2 {
@@ -76,142 +76,236 @@
   z-index: 4;
 }
 
-/* ---------- Activity 3 ---------- */
-/* Two-column layout using grid — boxes arranged 2 columns x 2 rows */
+/* ---------- Activity 3
+   Requirements:
+   - red and blue on the top row
+   - a large green square on the left and a large yellow square on the right between top and bottom
+   - green left, yellow right
+   - no gap between top and bottom of the two large squares (they touch top and bottom rows)
+*/
 .content3 {
+  width: 700px;
+  margin: 0 auto 40px;
   display: grid;
-  grid-template-columns: 150px 150px;
-  grid-template-rows: 150px 150px;
-  gap: 20px;
-  justify-content: center;
-  width: 100%;
-  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 120px 340px 120px; /* top row (red/blue), center tall row for green/yellow, bottom row (empty spacing) */
+  gap: 0; /* no vertical gap between the center squares and the rows they touch */
 }
+
+/* Top row: small horizontal bars (red left, blue right) */
 .red3 {
   background-color: red;
-  width: 150px;
-  height: 150px;
-  grid-column: 1;
-  grid-row: 1;
-}
-.green3 {
-  background-color: green;
-  width: 150px;
-  height: 150px;
-  grid-column: 2;
-  grid-row: 1;
-}
-.yellow3 {
-  background-color: gold;
-  width: 150px;
-  height: 150px;
-  grid-column: 1;
-  grid-row: 2;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  height: 120px;
+  width: 100%;
 }
 .blue3 {
   background-color: blue;
-  width: 150px;
-  height: 150px;
-  grid-column: 2;
-  grid-row: 2;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  height: 120px;
+  width: 100%;
 }
 
-/* ---------- Activity 4 ---------- */
-/* Two-wide bars (red/blue) spanning both columns, small squares in middle row */
-.content4 {
-  display: grid;
-  grid-template-columns: 200px 200px;
-  grid-template-rows: 100px 200px 100px;
-  gap: 20px;
-  justify-content: center;
-  align-content: center;
-  width: 90%;
-  margin: 0 auto;
-}
-.red4 {
-  background-color: red;
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  height: 100px;
-}
-.green4 {
+/* Middle tall squares that touch top and bottom rows (no gap) */
+.green3 {
   background-color: green;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  height: 340px;
+  box-sizing: border-box;
+}
+.yellow3 {
+  background-color: gold;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 100%;
+  height: 340px;
+  box-sizing: border-box;
+}
+
+/* Leave bottom row empty (or acts as padding) */
+/* If you want the bottom to be zero height, reduce grid-template-rows accordingly. */
+
+/* ---------- Activity 4
+   Requirements:
+   - left half entirely red (spanning full height)
+   - right half split into three equal rectangles stacked: green (top), yellow (middle), blue (bottom)
+   - no gaps between them
+*/
+.content4 {
+  width: 700px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;          /* left column (red) and right column (stacked three) */
+  grid-template-rows: 1fr 1fr 1fr;         /* three equal horizontal slices */
+  gap: 0;                                  /* no gaps between boxes */
+  height: 450px;                           /* total height to be split evenly */
+}
+
+/* Left column: red spans all rows */
+.red4 {
+  background-color: red;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4; /* span all 3 rows */
+  width: 100%;
+  height: 100%;
+}
+
+/* Right column: three stacked equal rectangles */
+.green4 {
+  background-color: green;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 100%;
+  height: 100%;
 }
 .yellow4 {
   background-color: gold;
   grid-column: 2 / 3;
   grid-row: 2 / 3;
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  height: 100%;
 }
 .blue4 {
   background-color: blue;
-  grid-column: 1 / 3;
+  grid-column: 2 / 3;
   grid-row: 3 / 4;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 }
 
-/* ---------- Activity 5 ---------- */
-/* Float the red box so text wraps around it (grid is not appropriate here) */
+/* ---------- Activity 5
+   Requirements:
+   - red full width across the top
+   - blue full width across the bottom
+   - yellow box with text in front of it (text shows over yellow)
+   - green box on left (no text), text wraps around green
+*/
 .content5 {
-  width: 70%;
-  margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.5;
-  overflow: auto; /* keep layout tidy after floats */
+  width: 90%;
+  margin: 0 auto 40px;
+  position: relative;
+  padding: 10px 0;
+  box-sizing: border-box;
 }
+
+/* Red full width top bar */
 .red5 {
+  background-color: red;
+  width: 100%;
+  height: 100px;
+  display: block;
+}
+
+/* Blue full width bottom bar: placed at bottom of the content5 area */
+.blue5 {
+  background-color: blue;
+  width: 100%;
+  height: 100px;
+  display: block;
+  margin-top: 20px; /* separation from middle area */
+}
+
+/* Green box on the left, text wraps around it */
+.green5 {
   width: 150px;
   height: 150px;
-  background-color: red;
+  background-color: green;
   float: left;
-  margin: 0 20px 20px 0;
-}
-.green5, .blue5 {
-  display: none; /* exercise only shows red floated box with text wrapping */
-}
-.yellow5 {
-  background-color: transparent;
+  margin: 20px 20px 20px 0;
 }
 
-/* ---------- Activity 6 ---------- */
-/* Visualize a 6x6 grid; layered boxes with z-index */
-.content6 {
-  display: grid;
-  grid-template-columns: repeat(6, 100px);
-  grid-template-rows: repeat(6, 100px);
-  width: 600px;
-  height: 600px;
-  margin: 0 auto;
-  position: relative;
-}
-.red6 {
-  background-color: red;
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
-  z-index: 1;
-}
-.green6 {
-  background-color: green;
-  grid-column: 2 / 4;
-  grid-row: 2 / 4;
-  z-index: 2;
-}
-.yellow6 {
+/* Yellow box where text is visually in front of it.
+   We'll put the long paragraph text in the yellow box (it already exists in HTML).
+   Make yellow visible and ensure text z-index above it.
+*/
+.yellow5 {
   background-color: gold;
-  grid-column: 3 / 5;
-  grid-row: 3 / 5;
+  padding: 20px;
+  margin-left: 0;
+  position: relative;
+  z-index: 2; /* bring text in front if there are overlapping elements */
+  color: black;
+  display: block;
+  overflow: visible;
+}
+
+/* Ensure paragraph text inside .yellow5 is visible and sits in front */
+.content5 .yellow5 p, .content5 .yellow5 {
+  position: relative;
   z-index: 3;
 }
+
+/* If you need the yellow box to be centered between red and blue, adjust margins padding accordingly. */
+
+/* Make sure any floats are cleared */
+.content5::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ---------- Activity 6
+   Requirements:
+   - red rectangle in the top-left corner, behind (back)
+   - blue rectangle in the middle on top
+   - yellow rectangle bottom-right on top of blue
+   - small green square bottom-left on top of blue
+*/
+.content6 {
+  position: relative;
+  width: 700px;
+  height: 500px;
+  margin: 0 auto 60px;
+  background: transparent;
+}
+
+/* Red rectangle in top-left at back (lowest z-index) */
+.red6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 220px;
+  background-color: red;
+  z-index: 1;
+}
+
+/* Blue rectangle centered in the middle, above red */
 .blue6 {
+  position: absolute;
+  width: 420px;
+  height: 260px;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
   background-color: blue;
-  grid-column: 4 / 6;
-  grid-row: 4 / 6;
+  z-index: 3;
+}
+
+/* Yellow rectangle bottom-right, on top of blue */
+.yellow6 {
+  position: absolute;
+  width: 260px;
+  height: 180px;
+  right: 0;
+  bottom: 0;
+  background-color: gold;
   z-index: 4;
+}
+
+/* Small green square bottom-left, on top of blue */
+.green6 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 0;
+  bottom: 0;
+  background-color: green;
+  z-index: 5;
 }
 
 /* ---------- Shared styles (leave alone) ---------- */
@@ -222,7 +316,7 @@
   border: 1px solid black;
   padding: 10px;
   clear: both;
-  overflow: auto;
+  overflow: visible;
 }
 .hint {
   border: 1px solid grey;
@@ -243,26 +337,3 @@
   cursor: pointer;
 }
 .hint input[type=checkbox]:checked ~ div { display: block; }
-.hint i {
-  position: absolute;
-  transform: translate(-6px, 0);
-  margin-top: 16px;
-  right: 10px;
-  top: -3px;
-}
-.hint i:before, .hint i:after {
-  content: "";
-  position: absolute;
-  background-color: black;
-  width: 3px;
-  height: 9px;
-}
-.hint i:before { transform: translate(2px, 0) rotate(45deg); }
-.hint i:after { transform: translate(-2px, 0) rotate(-45deg); }
-.hint input[type=checkbox]:checked ~ i:before {
-  transform: translate(-2px, 0) rotate(45deg);
-}
-.hint input[type=checkbox]:checked ~ i:after {
-  transform: translate(2px, 0) rotate(-45deg);
-}
-.hint a { position: relative; z-index: 1; }
