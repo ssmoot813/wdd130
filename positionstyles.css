@@ -75,6 +75,7 @@
   height: 100px;
   z-index: 4;
 }
+
 /* ---------- Activity 3 (Red top, Blue bottom, Green/Yellow middle with gap) ---------- */
 .content3 {
   width: 700px;
@@ -120,6 +121,7 @@
   margin-left: 5px;    /* slight gap from green */
   box-sizing: border-box;
 }
+
 /* Leave bottom row empty (or acts as padding) */
 /* If you want the bottom to be zero height, reduce grid-template-rows accordingly. */
 
@@ -226,7 +228,6 @@
   display: table;
   clear: both;
 }
-
 /* ---------- Activity 6 (Red back, Blue middle, Yellow bottom-right, Green bottom-left) ---------- */
 .content6 {
   width: 700px;
@@ -279,3 +280,33 @@
   width: 80px;
   height: 80px;
 }
+
+/* ---------- Shared styles (leave alone) ---------- */
+.activity {
+  width: 70%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  border: 1px solid black;
+  padding: 10px;
+  clear: both;
+  overflow: visible;
+}
+.hint {
+  border: 1px solid grey;
+  background: #e0e0e0;
+  padding: .5em;
+  position: relative;
+  margin: 1em 0;
+}
+.hint h3 { margin: 0; }
+.hint:hover { background: #d0d0d0; }
+.hint > div { display: none; }
+.hint input[type=checkbox] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.hint input[type=checkbox]:checked ~ div { display: block; }
