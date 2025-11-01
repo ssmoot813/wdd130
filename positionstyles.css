@@ -173,7 +173,7 @@
   height: 100%;
 }
 
-/* ---------- Activity 5 (correct to match example image) ---------- */
+/* ---------- Activity 5 (Red top, Blue bottom, Yellow text area, Green on top-left) ---------- */
 .content5 {
   width: 90%;
   margin: 0 auto 40px;
@@ -181,35 +181,47 @@
   box-sizing: border-box;
 }
 
-/* Red bar across the top */
+/* Red bar at the top, full width */
 .red5 {
   background-color: red;
   width: 100%;
   height: 100px;
 }
 
-/* Green box on the left — text wraps around it */
-.green5 {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-  float: left;
-  margin: 0 20px 20px 0; /* small right/bottom spacing for text wrap */
-}
-
-/* Yellow box containing the text */
-.yellow5 {
-  background-color: gold;
-  padding: 15px;
-  overflow: auto;
-}
-
-/* Blue bar across the bottom */
+/* Blue bar at the bottom, full width */
 .blue5 {
   background-color: blue;
   width: 100%;
   height: 100px;
-  clear: both; /* ensures it appears below wrapped text and float */
+  clear: both;
+}
+
+/* Yellow box with text, forms the main middle section */
+.yellow5 {
+  background-color: gold;
+  padding: 20px;
+  color: black;
+  overflow: auto; /* ensures text wraps properly */
+  position: relative;
+  z-index: 1;
+}
+
+/* Green box floats on top-left of the yellow area */
+.green5 {
+  background-color: green;
+  width: 150px;
+  height: 150px;
+  float: left;
+  margin: 0 20px 20px 0;
+  position: relative;
+  z-index: 2; /* brings green in front of yellow */
+}
+
+/* Clear floats to prevent layout issues */
+.content5::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* ---------- Activity 6 (Red back, Blue middle, Yellow bottom-right, Green bottom-left) ---------- */
