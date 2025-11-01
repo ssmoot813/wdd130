@@ -175,55 +175,36 @@
 
 /* ---------- Activity 5 — pixel-perfect match ---------- */
 .content5 {
-  width: 90%;
-  max-width: 1280px;
-  margin: 0 auto 40px;
-  box-sizing: border-box;
-  position: relative;
-  padding: 10px 0;
-}
-.red5 {
-  background-color: red;
-  width: 100%;
-  height: 120px;
-  display: block;
-}
-.yellow5 {
-  background-color: gold;
-  padding: 24px 28px;
-  margin-top: 0;
-  margin-bottom: 0;
-  min-height: 220px;
-  box-sizing: border-box;
-  position: relative;
-  overflow: visible;
-}
-.green5 {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  box-sizing: border-box;
+  border: 3px solid black;
+  height: 400px;
+  margin: auto;
 }
 
-/* Blue bottom bar */
-.blue5 {
-  background-color: blue;
+.red5 {
   width: 100%;
   height: 100px;
-  display: block;
-  margin-top: 0;
+  background-color: red;
 }
 
-.content5 .yellow5 p {
-  margin: 0;
-  line-height: 1.45;
-  padding-left: 6px;
-  position: relative;
-  z-index: 3;
+.green5 {
+  width: 100px;
+  height: 100px;
+  float: left;
+  background-color: green;
+
+}
+
+.yellow5 {
+  width: 100%;
+  height: 200px;
+  background-color: gold;
+
+}
+
+.blue5 {
+  width: 100%;
+  height: 100px;
+  background-color: blue;
 }
 
 
