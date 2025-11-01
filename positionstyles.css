@@ -173,113 +173,99 @@
   height: 100%;
 }
 
-/* ---------- Activity 5 (Red top, Blue bottom, Yellow text, Green on top left) ---------- */
+/* ---------- Activity 5 (correct to match example image) ---------- */
 .content5 {
   width: 90%;
   margin: 0 auto 40px;
   position: relative;
-  padding: 10px 0;
   box-sizing: border-box;
 }
 
+/* Red bar across the top */
 .red5 {
   background-color: red;
   width: 100%;
   height: 100px;
-  display: block;
 }
 
+/* Green box on the left — text wraps around it */
 .green5 {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   background-color: green;
   float: left;
-  margin: -50px 20px 20px 0; /* overlap yellow, top-left placement */
-  z-index: 2;
-  position: relative;
+  margin: 0 20px 20px 0; /* small right/bottom spacing for text wrap */
 }
 
+/* Yellow box containing the text */
 .yellow5 {
   background-color: gold;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
-  color: black;
-  display: block;
-  overflow: visible;
+  padding: 15px;
+  overflow: auto;
 }
 
-.content5 .yellow5 p, .content5 .yellow5 {
-  position: relative;
-  z-index: 2; /* ensure text shows in front */
-}
-
+/* Blue bar across the bottom */
 .blue5 {
   background-color: blue;
   width: 100%;
   height: 100px;
-  display: block;
-  margin-top: 0; /* remove gap above blue */
+  clear: both; /* ensures it appears below wrapped text and float */
 }
 
-/* Clear floats */
-.content5::after {
-  content: "";
-  display: table;
-  clear: both;
-}
 /* ---------- Activity 6 (Red back, Blue middle, Yellow bottom-right, Green bottom-left) ---------- */
 .content6 {
   width: 700px;
   height: 500px;
   margin: 0 auto 60px;
   position: relative;
-  display: grid;
-  grid-template-columns: 360px 340px; /* match red + remaining width */
-  grid-template-rows: 220px 280px;    /* match red top + remaining height */
+  border: 1px solid black; /* matches example outline */
 }
 
+/* Red box: top-left, behind others */
 .red6 {
   background-color: red;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  width: 400px;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
-  width: 100%;
-  height: 100%;
 }
 
+/* Blue box: large centered overlapping red */
 .blue6 {
   background-color: blue;
-  grid-column: 1 / 3;  /* spans both columns */
-  grid-row: 1 / 3;     /* spans both rows */
-  z-index: 3;
-  justify-self: center;
-  align-self: center;
-  width: 420px;
-  height: 260px;
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 2;
 }
 
+/* Yellow box: bottom-right corner */
 .yellow6 {
   background-color: gold;
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  z-index: 4;
-  justify-self: end;
-  align-self: end;
-  width: 260px;
-  height: 180px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
 }
 
+/* Green box: bottom-left corner */
 .green6 {
   background-color: green;
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  z-index: 5;
-  justify-self: start;
-  align-self: end;
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
 }
+
+
 
 /* ---------- Shared styles (leave alone) ---------- */
 .activity {
