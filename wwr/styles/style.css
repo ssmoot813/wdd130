@@ -262,3 +262,19 @@ footer {
     margin-left: auto;
   }
 }
+/* --- OVERLAP FIX FOR MOUNTAINS + ABOUT BOX --- */
+.mountains {
+  grid-column: 2 / 7;
+  margin-top: 80px;
+  position: relative;
+  z-index: 1; /* behind the box */
+}
+
+.msg {
+  grid-column: 6 / 10;    /* shift left slightly */
+  margin-top: 120px;       /* push down for overlap */
+  margin-left: -120px;     /* pulls box over the image */
+  position: relative;
+  z-index: 2;              /* sits above the mountains */
+  max-width: 430px;
+}
