@@ -27,7 +27,7 @@
 
 
 /* =========================================================
-   GLOBAL
+   GLOBAL ELEMENTS
    ========================================================= */
 body {
   font-family: var(--paragraph-font);
@@ -86,18 +86,18 @@ nav a:hover {
 
 
 /* =========================================================
-   HERO — FIXED VERSION
+   HERO
    ========================================================= */
 #hero {
   width: 100%;
-  height: 600px;
+  height: auto;
   position: relative;
   overflow: hidden;
 }
 
 #hero-img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -119,20 +119,20 @@ nav a:hover {
    HOME PAGE GRID
    ========================================================= */
 .home-grid {
-  margin-top: 60px;
+  margin-top: 120px; /* clean spacing under hero */
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
   max-width: 1500px;
-  margin: 60px auto 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ---- Card positions ---- */
+/* Cards */
 .rivers-card { grid-column: 2 / 4; text-align: center; }
 .camping-card { grid-column: 5 / 7; text-align: center; }
 .rapids-card  { grid-column: 8 / 10; text-align: center; }
 
-/* ---- Card Images ---- */
 .card-img {
   width: 200px;
   height: 200px;
@@ -154,29 +154,32 @@ nav a:hover {
 }
 
 
-/* ---- Mountains image ---- */
+/* =========================================================
+   MOUNTAINS IMAGE + ABOUT BOX
+   ========================================================= */
 .mountains {
   grid-column: 2 / 7;
   width: 100%;
-  max-width: 550px;
-  height: 260px;
+  max-width: 600px;
   object-fit: cover;
   border-radius: 10px;
   margin-top: 60px;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
 
-
-/* ---- About Box ---- */
 .msg {
   grid-column: 7 / 10;
   background-color: #6f7364;
   color: white;
-  padding: 45px;
+  padding: 35px;
   border-radius: 10px;
-  margin-top: 60px;
-  max-width: 420px;
-  box-shadow: 5px 5px 10px #6f7364;
+  max-width: 450px;
+
+  /* alignment improvement */
+  margin-top: 40px;
+  margin-left: -30px; /* slight overlap and better alignment */
+
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
 
 
@@ -256,61 +259,6 @@ footer {
   .msg {
     max-width: 90%;
     margin: 40px auto;
+    margin-left: auto;
   }
-}
-/* --- HERO FIX --- */
-#hero {
-  height: auto;
-}
-
-#hero-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
-/* --- SPACING UNDER HERO --- */
-.home-grid {
-  margin-top: 120px;
-}
-
-/* --- MOUNTAINS + ABOUT TEXT FIX --- */
-.mountains {
-  grid-column: 2 / 7;
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-}
-
-.msg {
-  grid-column: 7 / 10;
-  background-color: #6f7364;
-  padding: 35px;
-  border-radius: 10px;
-  color: white;
-  margin-top: 60px;
-  max-width: 450px;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-}
-
-/* --- SOCIAL ICONS FIX --- */
-.socials {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.socials img {
-  width: 40px;
-  height: auto;
-  transition: 0.3s ease;
-}
-
-.socials img:hover {
-  transform: scale(1.1);
 }
