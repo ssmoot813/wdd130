@@ -257,92 +257,131 @@ footer .socials img {
 .msg { grid-column: 6/10; grid-row: 6/7; }
 
 /* ===============================
-   RIVERS PAGE STYLES START HERE
+   RIVERS PAGE — HERO + GRID
    =============================== */
 
+/* Full-width hero banner */
+.rivers-hero {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    margin-top: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.rivers-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Title overlay */
+.rivers-hero .rivers-title {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0px 0px 12px rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.35);
+    padding: 10px 30px;
+    border-radius: 8px;
+}
+
+/* Main Rivers Grid container */
 .rivers-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  margin: 60px auto;
-  max-width: 1100px;
-  padding: 0 20px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+    display: grid;
+    gap: 50px;
 }
 
-.rivers-title {
-  text-align: center;
-  font-family: var(--heading-font);
-  color: var(--primary-color);
-  font-size: 2.4em;
-  margin-bottom: 20px;
+/* SECTION CARD */
+.river-section {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 30px;
 }
 
-.rivers-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 30px;
+/* Alternate image/text on every other card */
+.river-section:nth-child(even) img {
+    order: 2;
+}
+.river-section:nth-child(even) h2,
+.river-section:nth-child(even) p {
+    order: 1;
 }
 
-/* Better alternating layout using order instead of RTL */
-.rivers-section:nth-child(even) img {
-  order: 2;
-}
-.rivers-section:nth-child(even) .rivers-text {
-  order: 1;
-}
-
-.rivers-img {
-  width: 100%;
-  border: 10px solid var(--accent1-color);
-  border-radius: 12px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+/* Images inside river sections */
+.river-section img {
+    width: 100%;
+    border-radius: 12px;
+    border: 8px solid var(--accent1-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform .3s ease;
 }
 
-.rivers-img:hover {
-  transform: scale(1.05);
+.river-section img:hover {
+    transform: scale(1.04);
 }
 
-.rivers-text {
-  background-color: var(--paragraph-background-color);
-  color: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
-  line-height: 1.6;
+/* Section Titles */
+.river-section h2 {
+    font-family: var(--heading-font);
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
 }
 
-.rivers-text h3 {
-  font-family: var(--heading-font);
-  color: var(--secondary-color);
-  margin-top: 0;
+/* Section Text */
+.river-section p {
+    color: var(--paragraph-color-on-color);
+    line-height: 1.65;
+    font-size: 1rem;
 }
 
-.rivers-cta {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.rivers-cta a {
-  background-color: var(--accent2-color);
-  color: white;
-  padding: 15px 40px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-family: var(--heading-font);
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.rivers-cta a:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+/* Correct social icons class (Rivers page uses .social not .socials) */
+footer .social img {
+    width: 40px;
+    height: auto;
+    margin: 10px;
+    padding-top: 15px;
 }
 
 /* ===============================
-   END OF RIVERS PAGE STYLES
+   MOBILE FRIENDLY LAYOUT
    =============================== */
+
+@media screen and (max-width: 900px) {
+    .rivers-hero {
+        height: 250px;
+    }
+
+    .rivers-hero .rivers-title {
+        font-size: 2rem;
+        bottom: 15px;
+    }
+
+    .river-section {
+        grid-template-columns: 1fr; /* stack image + text */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .river-section img {
+        margin-bottom: 15px;
+    }
+}
 
 
 /* ===== MEDIA QUERIES ===== */
