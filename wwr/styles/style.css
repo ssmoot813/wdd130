@@ -3,7 +3,6 @@
    ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
 
-
 /* =========================================================
    COLOR VARIABLES
    ========================================================= */
@@ -25,9 +24,8 @@
   --light-bg: #f4f8fb;
 }
 
-
 /* =========================================================
-   GLOBAL ELEMENTS
+   GLOBAL
    ========================================================= */
 body {
   font-family: var(--paragraph-font);
@@ -47,7 +45,6 @@ img {
 h1, h2, h3 {
   font-family: var(--heading-font);
 }
-
 
 /* =========================================================
    HEADER & NAV
@@ -84,20 +81,19 @@ nav a:hover {
   border-radius: 6px;
 }
 
-
 /* =========================================================
    HERO
    ========================================================= */
 #hero {
   width: 100%;
-  height: auto;
+  height: 600px;
   position: relative;
   overflow: hidden;
 }
 
 #hero-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -114,25 +110,23 @@ nav a:hover {
   color: white;
 }
 
-
 /* =========================================================
    HOME PAGE GRID
    ========================================================= */
 .home-grid {
-  margin-top: 120px; /* clean spacing under hero */
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
   max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 120px auto 0 auto;
 }
 
-/* Cards */
+/* ---- Card positions ---- */
 .rivers-card { grid-column: 2 / 4; text-align: center; }
 .camping-card { grid-column: 5 / 7; text-align: center; }
 .rapids-card  { grid-column: 8 / 10; text-align: center; }
 
+/* ---- Card Images ---- */
 .card-img {
   width: 200px;
   height: 200px;
@@ -153,35 +147,34 @@ nav a:hover {
   margin: 10px auto;
 }
 
-
 /* =========================================================
-   MOUNTAINS IMAGE + ABOUT BOX
+   MOUNTAINS + ABOUT BOX (OVERLAP)
    ========================================================= */
+
 .mountains {
   grid-column: 2 / 7;
+  grid-row: 4 / 5;
   width: 100%;
   max-width: 600px;
   object-fit: cover;
   border-radius: 10px;
-  margin-top: 60px;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
 
 .msg {
-  grid-column: 7 / 10;
+  grid-column: 6 / 10;
+  grid-row: 4 / 5;
+  align-self: center;
   background-color: #6f7364;
   color: white;
-  padding: 35px;
+  padding: 45px;
   border-radius: 10px;
-  max-width: 450px;
+  max-width: 420px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.35);
 
-  /* alignment improvement */
-  margin-top: 40px;
-  margin-left: -30px; /* slight overlap and better alignment */
-
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  margin-top: -40px;
+  margin-left: -60px;
 }
-
 
 /* =========================================================
    BUTTONS
@@ -199,7 +192,6 @@ nav a:hover {
   background: var(--secondary-color);
   color: var(--primary-color);
 }
-
 
 /* =========================================================
    FOOTER
@@ -221,13 +213,13 @@ footer {
 
 .socials img {
   width: 40px;
-  transition: 0.3s;
+  height: auto;
+  transition: 0.3s ease;
 }
 
 .socials img:hover {
   transform: scale(1.15);
 }
-
 
 /* =========================================================
    MOBILE RESPONSIVENESS
@@ -252,29 +244,13 @@ footer {
 
   .mountains {
     width: 90%;
-    height: auto;
-    margin: 40px auto;
+    margin: 40px auto 0 auto;
+    max-width: none;
   }
 
   .msg {
     max-width: 90%;
-    margin: 40px auto;
-    margin-left: auto;
+    margin: 30px auto 0 auto;
+    margin-left: 0;
   }
-}
-/* --- OVERLAP FIX FOR MOUNTAINS + ABOUT BOX --- */
-.mountains {
-  grid-column: 2 / 7;
-  margin-top: 80px;
-  position: relative;
-  z-index: 1; /* behind the box */
-}
-
-.msg {
-  grid-column: 6 / 10;    /* shift left slightly */
-  margin-top: 120px;       /* push down for overlap */
-  margin-left: -120px;     /* pulls box over the image */
-  position: relative;
-  z-index: 2;              /* sits above the mountains */
-  max-width: 430px;
 }
