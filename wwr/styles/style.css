@@ -105,7 +105,8 @@ nav a:hover {
 #hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: black;
 }
 
 #hero-msg {
@@ -126,6 +127,7 @@ nav a:hover {
    HOME PAGE GRID
    ========================================================= */
 .home-grid {
+  margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
@@ -162,25 +164,28 @@ nav a:hover {
 .mountains {
   grid-column: 2 / 7;
   width: 100%;
-  max-width: 600px;
-  height: 300px;
+  max-width: 550px;
+  height: 260px;
   object-fit: cover;
   border-radius: 10px;
-  margin: 0 auto;
-  box-shadow: 5px 5px 10px #6f7364;
+  margin-top: 40px;
 }
+
 
 
 /* ---- ABOUT BOX ---- */
 .msg {
   grid-column: 7 / 10;
   background-color: #6f7364;
-  padding: 35px;
+  padding: 45px;
   border-radius: 10px;
   color: white;
-  max-width: 380px;
-  margin-left: auto;
+  max-width: 450px;
+  margin-left: 20px;
+  margin-top: 40px;
+  box-shadow: 5px 5px 10px #6f7364;
 }
+
 
 
 /* =========================================================
@@ -209,6 +214,23 @@ footer {
   text-align: center;
   margin-top: 80px;
   color: white;
+}
+
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.socials img {
+  width: 40px;
+  height: auto;
+  transition: 0.3s;
+}
+
+.socials img:hover {
+  transform: scale(1.1);
 }
 
 footer .socials img {
