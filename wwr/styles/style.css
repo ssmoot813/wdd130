@@ -1,236 +1,290 @@
-
-
+/* =========================================================
+   GOOGLE FONTS
+   ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
 
+
+/* =========================================================
+   COLOR VARIABLES
+   ========================================================= */
 :root {
   --primary-color: #1286DA;
   --secondary-color: #FFD864;
   --accent1-color: #B32F07;
   --accent2-color: #96D82C;
-  --heading-font: 'Cinzel', 'Georgia', serif;
+
+  --heading-font: 'Cinzel', Georgia, serif;
   --paragraph-font: 'Merriweather', Arial, serif;
 
-  --headline-color-on-white: #1286DA;
-  --headline-color-on-color: white;
-  --paragraph-color-on-white: #1286DA;
-  --paragraph-color-on-color: var(--primary-color);
-  --paragraph-background-color: #1286DA;
-  --nav-link-color: #96D82C;
   --nav-background-color: #AB4677;
-  --nav-hover-link-color: white;
+  --nav-link-color: #96D82C;
   --nav-hover-background-color: #1286DA;
+  --nav-hover-link-color: #ffffff;
+
+  --text-dark: #333;
+  --light-bg: #f4f8fb;
 }
 
-/* ===== GLOBAL ===== */
 
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 body {
   font-family: var(--paragraph-font);
   font-size: 22px;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: white;
-  color: var(--paragraph-color-on-color);
+  background: white;
+  color: var(--text-dark);
 }
 
-h2 {
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
   margin: 0;
 }
 
-/* ===== HEADER & NAV ===== */
 
+/* =========================================================
+   HEADER + NAVIGATION
+   ========================================================= */
 header {
   display: grid;
   grid-template-columns: 150px auto;
+  align-items: center;
   background-color: var(--nav-background-color);
   padding: 10px 20px;
-  align-items: center;
-  position: relative;
-  z-index: 5;
 }
 
-.logo img,
-.logo {
-    width: 80px;
-    height: auto;
-    display: block;
-    margin: 10px;
+.logo img {
+  width: 100px;
+  height: auto;
 }
 
+/* Navigation */
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
 nav a {
   text-decoration: none;
   color: var(--nav-link-color);
+  font-size: 1.1em;
+  padding: 25px 20px;
   font-family: var(--heading-font);
-  font-weight: bold;
-  margin: 0 15px;
-  padding: 35px;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s;
-  cursor: pointer;
-}
-
-nav a:hover {
-  background-color: var(--nav-hover-background-color);
-  color: var(--nav-hover-link-color);
+  transition: 0.3s;
   border-radius: 5px;
 }
 
-/* highlight active page */
+nav a:hover,
 nav a.active {
   background-color: var(--nav-hover-background-color);
   color: var(--nav-hover-link-color);
-  border-radius: 5px;
 }
 
-/* ===== HERO SECTION (Home Page) ===== */
 
+/* =========================================================
+   HERO — HOME PAGE
+   ========================================================= */
 #hero {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
   position: relative;
   width: 100%;
-  height: 500px;
-  text-align: center;
+  height: 480px;
   overflow: hidden;
-  margin-top: -100px;
 }
 
 #hero-box {
-  grid-column: 1/4;
-  grid-row: 1/3;
-  z-index: -1;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 #hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 #hero-msg {
-  grid-column: 2/3;
-  grid-row: 1/2;
-  margin-top: 100px;
-  position: relative;
-  background-color: rgba(18, 134, 218, 0.6);
-  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(18, 134, 218, 0.65);
   padding: 30px 40px;
-  border-radius: 10px;
-  max-width: 80%;
+  border-radius: 12px;
   text-align: center;
-  z-index: 2;
-  box-sizing: border-box;
+  color: white;
+  width: 70%;
 }
 
 #hero-msg h1 {
-  margin: 0 0 10px 0;
-  font-size: 2em;
-  font-family: var(--heading-font);
+  font-size: 2.3em;
 }
 
 #hero-msg h4 {
-  margin: 0;
-  font-size: 1.2em;
-  font-family: var(--heading-font);
-  color: white;
+  margin-bottom: 20px;
 }
 
-/* ===== HOME PAGE GRID ===== */
 
+/* =========================================================
+   HOME PAGE GRID
+   ========================================================= */
 main.home-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-auto-rows: auto;
   gap: 20px;
-}
-
-.card-img, .mountains {
-  width: 100%;
-  height: auto;
-  display: block;
+  padding: 40px 20px;
 }
 
 .card-img {
-  border: 10px solid var(--accent1-color);
-  box-sizing: border-box;
-  transition: transform .5s;
-  box-shadow: 5px 5px 10px #6f7364;
+  border: 8px solid var(--accent1-color);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
 .card-img:hover {
-  opacity: 0.6;
-  transform: scale(1.1);
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 .icon {
   width: 80px;
-  height: auto;
-  display: block;
   margin: 10px auto;
-  padding-top: 10px;
 }
 
-.home-title, .msg h2 {
-  font-family: var(--heading-font);
-  font-size: 2em;
-  margin-top: 10px;
-}
-
-.book, .join {
-  background-color: var(--accent1-color);
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 15px 30px;
-  margin-top: 20px;
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.book:hover, .join:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+.mountains {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
 }
 
 .msg {
   background-color: #6f7364;
-  color: white;
   padding: 35px;
-  margin: 20px;
-  line-height: 1.5em;
-  box-shadow: 5px 5px 10px #6f7364;
+  border-radius: 10px;
+  color: white;
 }
 
-.msg p {
-  padding-bottom: 15px;
-  font-size: 0.8em;
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.book, .join, .rivers-cta a {
+  background-color: var(--accent1-color);
+  color: white;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* ===== FOOTER ===== */
+.book:hover, .join:hover, .rivers-cta a:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
 
-footer {
-  background-color: var(--primary-color);
-  color: var(--headline-color-on-color);
-  text-align: center;
-  padding: 25px 50px;
-  margin-top: 200px;
-  display: flex;
-  justify-content: space-around;
+
+/* =========================================================
+   RIVERS PAGE — HERO
+   ========================================================= */
+.rivers-hero {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.rivers-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rivers-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: white;
+  background: rgba(0,0,0,0.55);
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+
+/* =========================================================
+   RIVERS PAGE — CONTENT GRID
+   ========================================================= */
+.rivers-grid {
+  display: grid;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px 20px;
+}
+
+.river-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
   align-items: center;
 }
 
-/* Reduce footer space on inner pages */
-.rivers-grid + footer {
+/* Alternating layout */
+.river-section:nth-child(even) img {
+  order: 2;
+}
+.river-section:nth-child(even) .rivers-text {
+  order: 1;
+}
+
+.rivers-img {
+  border: 8px solid var(--accent1-color);
+  border-radius: 10px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.rivers-img:hover {
+  transform: scale(1.04);
+}
+
+.rivers-text {
+  background: var(--light-bg);
+  padding: 25px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+.rivers-text h2 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+  background: var(--primary-color);
+  padding: 30px 20px;
+  text-align: center;
   margin-top: 80px;
+  color: white;
 }
 
 footer a {
@@ -240,198 +294,46 @@ footer a {
 
 footer a:hover {
   color: var(--accent2-color);
-  text-decoration: underline;
 }
 
 footer .socials img {
   width: 40px;
-  height: auto;
   margin: 10px;
-  padding-top: 15px;
-}
-
-/* ===== HOME PAGE GRID POSITIONS ===== */
-
-.rivers-card { grid-column: 2/4; grid-row: 2/3; }
-.camping-card { grid-column: 5/7; grid-row: 2/3; }
-.rapids-card { grid-column: 8/10; grid-row: 2/3; }
-#background { grid-column: 1/11; grid-row: 4/9; }
-.mountains { grid-column: 2/7; grid-row: 5/8; box-shadow: 5px 5px 10px #6f7364; }
-.msg { grid-column: 6/10; grid-row: 6/7; }
-
-/* ===============================
-   HERO SECTION (Both Pages)
-   =============================== */
-
-#hero,
-.rivers-hero {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
-}
-
-#hero-img,
-.rivers-hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.rivers-hero .rivers-title {
-  position: absolute;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(18, 134, 218, 0.6);
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-size: 2.5rem;
-  font-family: var(--heading-font);
-  color: white;
-  text-align: center;
 }
 
 
-/* ===============================
-   RIVERS PAGE LAYOUT
-   =============================== */
-
-.rivers-grid {
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 20px;
-  display: grid;
-  gap: 60px;
-}
-*/
-.river-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.river-section:nth-child(even) img {
-  order: 2;
-}
-.river-section:nth-child(even) h2,
-.river-section:nth-child(even) p {
-  order: 1;
-}
-
-/* ===============================
-   RIVER PAGE IMAGE STYLING
-   =============================== */
-
-.river-section img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border: 10px solid var(--accent1-color);
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.river-section img:hover {
-  transform: scale(1.05);
-}
-
-/* ===============================
-   RIVER PAGE TEXT STYLING
-   =============================== */
-
-.river-section h2 {
-  font-family: var(--heading-font);
-  font-size: 1.9rem;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-.river-section p {
-  background: rgba(18, 134, 218, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  line-height: 1.6;
-  color: #333;
-  font-size: 1rem;
-}
-
-.rivers-grid + footer {
-  margin-top: 80px;
-}
-
-/* ===============================
-   MOBILE LAYOUT
-   =============================== */
-
+/* =========================================================
+   MOBILE RESPONSIVENESS
+   ========================================================= */
 @media screen and (max-width: 900px) {
+
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav a {
+    padding: 15px;
+  }
+
+  #hero, .rivers-hero {
+    height: auto;
+  }
 
   .river-section {
-    grid-template-columns: 1fr !important;
-    text-align: center;
+    grid-template-columns: 1fr;
   }
 
-  .river-section img {
-    height: 250px;
+  .rivers-title {
+    font-size: 2em;
+    padding: 15px 25px;
   }
 
-  .rivers-hero {
-    height: 280px;
+  main.home-grid {
+    display: block;
   }
 
-  .rivers-hero .rivers-title {
-    font-size: 1.8rem;
-    padding: 10px 20px;
+  footer {
+    margin-top: 40px;
   }
-}
-
-/* ===== MEDIA QUERIES ===== */
-
-@media screen and (max-width: 900px) {
-
-  #hero, .home-grid { display: block; height: auto; }
-
-  nav, footer { flex-direction: column; }
-
-  nav a { 
-    display: block; 
-    padding: 15px; 
-  }
-
-  #hero { margin-top: 0; }
-  #hero-msg { margin-top: 0; }
-  #hero-msg h4 { display: none; }
-
-  .home-title { font-size: 25px; }
-
-  .rivers-card, .camping-card, .rapids-card { 
-    margin: 50px auto; 
-    width: 60%; 
-  }
-
-  #background { display: none; }
-
-  .mountains, .msg { 
-    width: 80%; 
-    display: block; 
-    margin: 0 auto; 
-  }
-
-  /* Mobile Layout for Rivers Page */
-  .rivers-section {
-    grid-template-columns: 1fr !important;
-  }
-
-  .rivers-img {
-    margin-bottom: 20px;
-  }
-
-  .rivers-text {
-    text-align: center;
-  }
-
-  footer { margin-top: 25px; }
 }
