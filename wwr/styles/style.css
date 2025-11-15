@@ -49,11 +49,12 @@ header {
   z-index: 5;
 }
 
-.logo img {
-  width: 80px;
-  height: auto;
-  display: block;
-  margin: 10px;
+.logo img,
+.logo {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 10px;
 }
 
 nav {
@@ -280,7 +281,7 @@ footer .socials img {
 }
 
 /* Title overlay */
-.rivers-hero .rivers-title {
+.rivers-title {
     position: absolute;
     bottom: 25px;
     left: 50%;
@@ -294,7 +295,7 @@ footer .socials img {
     border-radius: 8px;
 }
 
-/* Main Rivers Grid container */
+/* == Main Rivers Grid == */
 .rivers-grid {
     width: 90%;
     max-width: 1100px;
@@ -303,28 +304,27 @@ footer .socials img {
     gap: 50px;
 }
 
-/* SECTION CARD */
+/* Section Box */
 .river-section {
     background: white;
     padding: 25px;
     border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.18);
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
 }
 
-/* Alternate image/text on every other card */
+/* Alternating layouts */
 .river-section:nth-child(even) img {
     order: 2;
 }
-.river-section:nth-child(even) h2,
-.river-section:nth-child(even) p {
+.river-section:nth-child(even) div {
     order: 1;
 }
 
-/* Images inside river sections */
+/* River images */
 .river-section img {
     width: 100%;
     border-radius: 12px;
@@ -337,7 +337,7 @@ footer .socials img {
     transform: scale(1.04);
 }
 
-/* Section Titles */
+/* Titles */
 .river-section h2 {
     font-family: var(--heading-font);
     font-size: 1.9rem;
@@ -345,14 +345,14 @@ footer .socials img {
     color: var(--primary-color);
 }
 
-/* Section Text */
+/* Paragraphs */
 .river-section p {
     color: var(--paragraph-color-on-color);
     line-height: 1.65;
     font-size: 1rem;
 }
 
-/* Correct social icons class (Rivers page uses .social not .socials) */
+/* Fix for footer icons on rivers page (social vs socials class difference) */
 footer .social img {
     width: 40px;
     height: auto;
@@ -361,30 +361,31 @@ footer .social img {
 }
 
 /* ===============================
-   MOBILE FRIENDLY LAYOUT
+   MOBILE LAYOUT
    =============================== */
-
 @media screen and (max-width: 900px) {
+
     .rivers-hero {
         height: 250px;
     }
 
-    .rivers-hero .rivers-title {
+    .rivers-title {
         font-size: 2rem;
         bottom: 15px;
+        padding: 8px 20px;
     }
 
     .river-section {
-        grid-template-columns: 1fr; /* stack image + text */
+        grid-template-columns: 1fr !important;
         text-align: center;
         padding: 20px;
     }
 
     .river-section img {
-        margin-bottom: 15px;
+        margin: 0 auto;
+        width: 90%;
     }
 }
-
 
 /* ===== MEDIA QUERIES ===== */
 
