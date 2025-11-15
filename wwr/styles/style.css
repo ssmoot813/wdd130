@@ -51,45 +51,57 @@ h1, h2, h3 {
 }
 
 
-/* =========================================================
-   HEADER + NAVIGATION
-   ========================================================= */
+/* ===== HEADER & NAV — FIXED TO ORIGINAL ===== */
+
 header {
   display: grid;
   grid-template-columns: 150px auto;
-  align-items: center;
   background-color: var(--nav-background-color);
   padding: 10px 20px;
+  align-items: center;
 }
 
 .logo img {
-  width: 100px;
+  width: 80px;
   height: auto;
+  display: block;
+  margin: 10px;
 }
 
-/* Navigation */
 nav {
   display: flex;
-  justify-content: flex-end;
-  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 nav a {
   text-decoration: none;
   color: var(--nav-link-color);
-  font-size: 1.1em;
-  padding: 25px 20px;
   font-family: var(--heading-font);
-  transition: 0.3s;
-  border-radius: 5px;
+  font-weight: bold;
+  margin: 0 15px;
+  padding: 35px;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
 }
 
-nav a:hover,
 nav a.active {
   background-color: var(--nav-hover-background-color);
   color: var(--nav-hover-link-color);
+  border-radius: 5px;
 }
 
+
+.card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 10px solid var(--accent1-color);
+  box-sizing: border-box;
+  transition: transform .5s;
+  box-shadow: 5px 5px 10px #6f7364;
+}
 
 /* =========================================================
    HERO — HOME PAGE
