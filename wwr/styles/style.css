@@ -162,25 +162,28 @@ nav a.active {
 .rapids-card { grid-column: 8 / 10; text-align: center; }
 
 .card-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: 200px;
+  height: 150px;
   object-fit: cover;
   border: 10px solid var(--accent1-color);
-  box-sizing: border-box;
   border-radius: 10px;
-  transition: transform 0.3s ease;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+  margin: 0 auto;
 }
+
 
 .card-img:hover {
   transform: scale(1.05);
 }
 
 .icon {
-  width: 70px;
+  width: 60px;
+  height: auto;
   margin: 10px auto 0;
   display: block;
 }
+
 
 
 #background {
@@ -191,7 +194,12 @@ nav a.active {
 .mountains {
   grid-column: 2 / 7;
   width: 100%;
+  max-width: 600px;
+  height: 280px;
+  object-fit: cover;
   border-radius: 10px;
+  box-shadow: 5px 5px 10px #6f7364;
+  margin: 0 auto;
 }
 
 .msg {
@@ -200,7 +208,10 @@ nav a.active {
   padding: 35px;
   border-radius: 10px;
   color: white;
+  max-width: 380px;
+  margin-left: auto;
 }
+
 
 
 /* =========================================================
