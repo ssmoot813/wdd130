@@ -1,21 +1,26 @@
-/* if you are using any Google fonts change the font names below to your fonts. 
-Any spaces in your font name should be replaced with a +. 
-Fonts are separated by a | */
+/* ----------------------------------------------------
+   GOOGLE FONTS
+   ---------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Lora');
 
+
+/* ----------------------------------------------------
+   COLOR VARIABLES
+   ---------------------------------------------------- */
 :root {
-  /* change the values below to your colors from your palette */
-  --primary-color: #0B1D51 ;
-  --secondary-color: #c0c0c0 ;
+  /* Your chosen palette */
+  --primary-color: #0B1D51;
+  --secondary-color: #c0c0c0;
   --accent1-color: #BFA5E3;
   --accent2-color: #FFD700;
   --accent3-color: #6B2E91;
 
-  /* change the values below to your chosen font(s) */
+  /* Typography */
   --heading-font: "Cinzel Decorative", serif;
   --paragraph-font: "Lora", serif;
 
-  --headline-color-on-white: #0B1D51;   /* Deep blue for headlines on white */
+  /* Text color logic */
+  --headline-color-on-white: #0B1D51;
   --headline-color-on-color: #FFD700;
 
   --paragraph-color-on-white: #2F2F2F;
@@ -23,6 +28,7 @@ Fonts are separated by a | */
 
   --paragraph-background-color: #0B1D51;
 
+  /* Navigation */
   --nav-link-color: #FFD700;
   --nav-background-color: #0B1D51;
   --nav-hover-link-color: #FFFFFF;
@@ -30,6 +36,9 @@ Fonts are separated by a | */
 }
 
 
+/* ----------------------------------------------------
+   STOP HERE — DO NOT EDIT ANYTHING BELOW THIS LINE
+   ---------------------------------------------------- */
 /*  Look around below...but DON'T CHANGE ANYTHING! */
 
 body {
