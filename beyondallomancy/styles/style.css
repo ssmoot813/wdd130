@@ -8,16 +8,16 @@
 ---------------------------------------------------- */
 :root {
   --primary-color: #0B1D51;     /* deep blue */
-  --secondary-color: #c0c0c0;   /* silver/gray */
-  --accent1-color: #BFA5E3;     /* soft violet */
+  --secondary-color: #c0c0c0;   /* silver */
+  --accent1-color: #BFA5E3;     /* violet */
   --accent2-color: #FFD700;     /* gold */
   --accent3-color: #6B2E91;     /* royal purple */
 
   --heading-font: "Cinzel Decorative", serif;
   --paragraph-font: "Lora", serif;
 
-  --headline-color: #0B1D51;
-  --paragraph-color: #2F2F2F;
+  --headline-color: #FFD700; /* gold text on blue */
+  --paragraph-color: #ffffff; /* white text on blue */
 
   --nav-bg: #0B1D51;
   --nav-link: #FFD700;
@@ -26,15 +26,17 @@
 }
 
 /* ----------------------------------------------------
-   GLOBAL RESET
+   GLOBAL BASE
 ---------------------------------------------------- */
 body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   font-family: var(--paragraph-font);
-  background-color: var(--primary-color);   /* deep blue background */
-  color: #ffffff;                           /* default text is white */
+
+  background-color: var(--primary-color);
+
+  color: var(--paragraph-color);
 }
 
 /* ----------------------------------------------------
@@ -72,7 +74,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   HOME PAGE GRID (Option A layout)
+   HOME PAGE GRID (Option A)
 ---------------------------------------------------- */
 .home-grid {
   display: grid;
@@ -86,51 +88,49 @@ body {
    HERO SECTION
 ---------------------------------------------------- */
 .hero {
-  background-color: var(--accent2-color); /* gold */
+  background-color: var(--accent1-color);
   padding: 3rem 2rem;
   border-radius: 10px;
   text-align: center;
 }
 
 .hero h1 {
-  color: var(--primary-color);     /* deep blue text */
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
-  color: #2F2F2F;   /* dark gray for readability */
+  font-size: 1.3rem;
+  color: #ffffff;
 }
 
-
 /* ----------------------------------------------------
-   INTRO TEXT
+   INTRO SECTION
 ---------------------------------------------------- */
 .intro {
-  background-color: #ffffff;
-  color: var(--paragraph-color);
-  padding: 2rem;
-  border-radius: 10px;
+  text-align: center;
   max-width: 900px;
-  margin: 2rem auto;
+  margin: 0 auto;
 }
 
 .intro h2 {
   font-family: var(--heading-font);
-  color: var(--primary-color);
+  color: var(--accent2-color);
   font-size: 2.2rem;
 }
 
 .intro p {
   font-size: 1.15rem;
   line-height: 1.7;
+  color: var(--paragraph-color);
 }
 
 /* ----------------------------------------------------
    IMAGE GRID
 ---------------------------------------------------- */
 .image-grid {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -141,15 +141,20 @@ body {
   height: 240px;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
 /* ----------------------------------------------------
    FOOTER
 ---------------------------------------------------- */
 .site-footer {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 1.5rem;
   background-color: var(--primary-color);
-  color: var(--accent2-color); /* gold */
+  color: white;
+  border-radius: 8px;
 }
 
 .site-footer a {
