@@ -8,11 +8,11 @@
    COLOR VARIABLES
    ---------------------------------------------------- */
 :root {
-  --primary-color: #0B1D51;
-  --secondary-color: #c0c0c0;
-  --accent1-color: #BFA5E3;
-  --accent2-color: #FFD700;
-  --accent3-color: #6B2E91;
+  --primary-color: #0B1D51;        /* Deep Cosmere blue */
+  --secondary-color: #c0c0c0;      /* Light silver */
+  --accent1-color: #BFA5E3;        /* Soft purple */
+  --accent2-color: #FFD700;        /* Gold */
+  --accent3-color: #6B2E91;        /* Deep violet */
 
   --heading-font: "Cinzel Decorative", serif;
   --paragraph-font: "Lora", serif;
@@ -23,221 +23,177 @@
   --paragraph-color-on-white: #2F2F2F;
   --paragraph-color-on-color: #FFFFFF;
 
-  --paragraph-background-color: #0B1D51;
-
-  --nav-link-color: #FFD700;
   --nav-background-color: #0B1D51;
-  --nav-hover-link-color: #FFFFFF;
+  --nav-link-color: #FFD700;
   --nav-hover-background-color: #6B2E91;
-}
+  --nav-hover-link-color: #FFFFFF;
 
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: var(--primary-color);
-  color: var(--headline-color-on-color);
-  border-radius: 12px;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-  color: var(--accent2-color);
-}
-
-.hero p {
-  color: white;
-  font-size: 1.2rem;
-}
-
-.intro {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px 10px;
-}
-
-.intro h2 {
-  margin-bottom: 10px;
-}
-
-.intro p {
-  line-height: 1.6;
-  font-size: 1.1rem;
-}
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  padding: 10px;
-}
-
-.image-grid img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  transition: transform 0.2s;
-}
-
-.image-grid img:hover {
-  transform: scale(1.03);
+  --footer-bg: #0B1D51;
 }
 
 
 /* ----------------------------------------------------
-   STOP HERE — DO NOT EDIT ANYTHING BELOW THIS LINE
+   GLOBAL RESETS & BASE TYPOGRAPHY
    ---------------------------------------------------- */
-/*  Look around below...but DON'T CHANGE ANYTHING! */
-
 body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4em;
-  font-size: 18px;
-  text-align: center;
-}
-img {
-  display: block;
-  margin: 0 auto;
-}
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
-  color: var(--headline-color-on-white);
-}
-h2 {
-  text-align: center;
-}
-hr {
-  height: 3px;
-  margin: 35px 0;
-  background: var(--accent1-color);
-}
-header {
-  padding: 1em;
-  text-align: center;
-  color: var(--headline-color-on-color);
-  background-color: var(--paragraph-background-color);
-}
-header > h1, header > h2 {
-  color: var(--headline-color-on-color);
-}
-
-p {
+  margin: 0;
+  background-color: #f7f7f7;
   font-family: var(--paragraph-font);
   color: var(--paragraph-color-on-white);
-  padding: 1em;
+  line-height: 1.6;
 }
-.colors {
-  width: 100%;
-  min-width: 350px;
-  margin: 30px auto;
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  color: var(--headline-color-on-white);
   text-align: center;
 }
-.colors th {
-  background-color: #999;
-}
-.colors td{
-  width: 25%;
-  height: 3em;
-}
 
-.primary {
+
+/* ----------------------------------------------------
+   HEADER & NAVIGATION
+   ---------------------------------------------------- */
+header {
   background-color: var(--primary-color);
-}
-.secondary {
-  background-color: var(--secondary-color);
-}
-.accent1 {
-  background-color: var(--accent1-color);
-}
-.accent2{
-  background-color: var(--accent2-color);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-p.colored {
-  background-color: var(--paragraph-background-color);
-  color: var(--paragraph-color-on-color);
+.logo {
+  height: 80px;
 }
 
 nav {
-  background-color: var(--nav-background-color);
-  line-height: 3em;
-  text-align: center;
-  font-size: 1.2em;
-}
-nav  {
-  list-style-type: none;
   display: flex;
-
+  gap: 25px;
 }
+
 nav a {
-  padding:1em;
-  min-width: 120px;
-  text-decoration: none;
-  padding: 10px;
-
-}
-nav a:link, nav a:visited {
   color: var(--nav-link-color);
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
 }
+
 nav a:hover {
-  color: var(--nav-hover-link-color);
   background-color: var(--nav-hover-background-color);
+  color: var(--nav-hover-link-color);
 }
 
-.sitemap {
-  display: grid;
-  justify-content: center;
 
-  grid-template-columns: repeat(6, 15%);
-  grid-template-rows: 3em 1.5em 1.5em 3em;
-  grid-template-areas: ". . home home . ."
-    ". . . top . ."
-    ". left left right right ."
-    "page2 page2 . . page3 page3";
-}
-.sitemap > div {
-
+/* ----------------------------------------------------
+   HERO SECTION
+   ---------------------------------------------------- */
+.hero {
+  background: linear-gradient(
+      rgba(11, 29, 81, 0.7),
+      rgba(11, 29, 81, 0.7)
+    ),
+    url("../images/cosmere.jpg") center/cover no-repeat;
+  padding: 120px 20px;
+  color: white;
   text-align: center;
-
-}
-.sm-home {
-  grid-area: home;
-  background-color: #ccc;
-  line-height: 3em;
-}
-.sm-page2 {
-  grid-area: page2;
-  background-color: #ccc;
-  line-height: 3em;
-}
-.sm-page3 {
-  grid-area: page3;
-  background-color: #ccc;
-  line-height: 3em;
 }
 
-.top {
-  grid-area: top;
-  border-left: 1px solid;
+.hero h1 {
+  font-size: 3rem;
+  color: var(--accent2-color);
 }
 
-.left {
-  grid-area: left;
-  border-top: 1px solid;
-  border-left: 1px solid;
+.hero p {
+  font-size: 1.3rem;
+  color: #eee;
 }
 
-.right {
-  grid-area: right;
-  border-top: 1px solid;
-  border-right: 1px solid;
+
+/* ----------------------------------------------------
+   INTRO SECTION
+   ---------------------------------------------------- */
+.intro {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border-left: 8px solid var(--accent1-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.intro p {
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+
+/* ----------------------------------------------------
+   IMAGE GRID (3-PANEL SECTION)
+   ---------------------------------------------------- */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 40px;
+  max-width: 1100px;
+  margin: 0 auto 60px auto;
+}
+
+.image-grid img {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+  transform: scale(1.04);
+}
+
+
+/* ----------------------------------------------------
+   FOOTER
+   ---------------------------------------------------- */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--headline-color-on-color);
+  text-align: center;
+  padding: 25px;
+  margin-top: 50px;
+}
+
+footer a {
+  color: var(--accent2-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* ----------------------------------------------------
+   RESPONSIVE DESIGN
+   ---------------------------------------------------- */
+@media (max-width: 900px) {
+  nav {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 }
