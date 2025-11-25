@@ -33,8 +33,8 @@ body {
   margin: 0 auto;
   padding: 2rem;
   font-family: var(--paragraph-font);
-  background-color: #ffffff;
-  color: var(--paragraph-color);
+  background-color: var(--primary-color);   /* deep blue background */
+  color: #ffffff;                           /* default text is white */
 }
 
 /* ----------------------------------------------------
@@ -86,31 +86,31 @@ body {
    HERO SECTION
 ---------------------------------------------------- */
 .hero {
-  background-color: var(--accent1-color);
+  background-color: var(--accent2-color); /* gold */
   padding: 3rem 2rem;
   border-radius: 10px;
   text-align: center;
 }
 
 .hero h1 {
-  font-family: var(--heading-font);
-  color: var(--primary-color);
-  font-size: 2.6rem;
-  margin-bottom: 1rem;
+  color: var(--primary-color);     /* deep blue text */
 }
 
 .hero p {
-  font-size: 1.3rem;
-  color: #ffffff;
+  color: #2F2F2F;   /* dark gray for readability */
 }
+
 
 /* ----------------------------------------------------
    INTRO TEXT
 ---------------------------------------------------- */
 .intro {
-  text-align: center;
+  background-color: #ffffff;
+  color: var(--paragraph-color);
+  padding: 2rem;
+  border-radius: 10px;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 .intro h2 {
@@ -128,6 +128,9 @@ body {
    IMAGE GRID
 ---------------------------------------------------- */
 .image-grid {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -145,12 +148,8 @@ body {
    FOOTER
 ---------------------------------------------------- */
 .site-footer {
-  margin-top: 4rem;
-  text-align: center;
-  padding: 1.5rem;
   background-color: var(--primary-color);
-  color: white;
-  border-radius: 8px;
+  color: var(--accent2-color); /* gold */
 }
 
 .site-footer a {
