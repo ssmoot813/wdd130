@@ -8,18 +8,15 @@
    COLOR VARIABLES
    ---------------------------------------------------- */
 :root {
-  /* Your chosen palette */
   --primary-color: #0B1D51;
   --secondary-color: #c0c0c0;
   --accent1-color: #BFA5E3;
   --accent2-color: #FFD700;
   --accent3-color: #6B2E91;
 
-  /* Typography */
   --heading-font: "Cinzel Decorative", serif;
   --paragraph-font: "Lora", serif;
 
-  /* Text color logic */
   --headline-color-on-white: #0B1D51;
   --headline-color-on-color: #FFD700;
 
@@ -28,72 +25,60 @@
 
   --paragraph-background-color: #0B1D51;
 
-  /* Navigation */
   --nav-link-color: #FFD700;
   --nav-background-color: #0B1D51;
   --nav-hover-link-color: #FFFFFF;
   --nav-hover-background-color: #6B2E91;
 }
 
-
-/* ----------------------------------------------------
-   HOME PAGE LAYOUT (ABOVE STOP HERE)
-   ---------------------------------------------------- */
-
-/* Keep header clean and spaced */
 header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 20px;
+  gap: 20px;
 }
 
 .logo {
-  height: 80px;
+  width: 110px;
+  height: auto;
 }
 
-/* Hero section */
+nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
 .hero {
   background: linear-gradient(
       rgba(11, 29, 81, 0.65),
       rgba(11, 29, 81, 0.65)
     ),
-    url("../images/cosmere.jpg") center/cover no-repeat;
-  
-  color: var(--headline-color-on-color);
+    url('../images/cosmere.jpg');
+  background-size: cover;
+  background-position: center;
   padding: 80px 20px;
   border-radius: 12px;
-  margin: 40px 0;
+  color: var(--headline-color-on-color);
 }
 
 .hero h1 {
   font-size: 3rem;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .hero p {
-  font-size: 1.3rem;
   color: white;
+  font-size: 1.2rem;
 }
 
-/* Intro text section */
 .intro {
+  margin: 40px auto;
   max-width: 900px;
-  margin: 0 auto 40px auto;
-  text-align: center;
+  line-height: 1.6;
 }
 
-.intro h2 {
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-.intro p {
-  line-height: 1.7;
-  font-size: 1.1rem;
-}
-
-/* Image Grid */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -103,22 +88,21 @@ header {
 
 .image-grid img {
   width: 100%;
-  height: 240px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
 }
 
 .image-grid img:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
 /* Footer */
 footer {
-  margin-top: 60px;
-  padding: 30px;
+  margin-top: 50px;
+  padding: 20px;
   background-color: var(--primary-color);
   color: var(--headline-color-on-color);
   border-radius: 10px;
@@ -126,12 +110,13 @@ footer {
 
 footer a {
   color: var(--accent2-color);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 footer a:hover {
-  color: white;
+  text-decoration: underline;
 }
+
 
 /* ----------------------------------------------------
    STOP HERE — DO NOT EDIT ANYTHING BELOW THIS LINE
@@ -145,28 +130,34 @@ body {
   font-size: 18px;
   text-align: center;
 }
+
 img {
   display: block;
   margin: 0 auto;
 }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
   color: var(--headline-color-on-white);
 }
+
 h2 {
   text-align: center;
 }
+
 hr {
   height: 3px;
   margin: 35px 0;
   background: var(--accent1-color);
 }
+
 header {
   padding: 1em;
   text-align: center;
   color: var(--headline-color-on-color);
   background-color: var(--paragraph-background-color);
 }
+
 header > h1, header > h2 {
   color: var(--headline-color-on-color);
 }
@@ -176,16 +167,19 @@ p {
   color: var(--paragraph-color-on-white);
   padding: 1em;
 }
+
 .colors {
   width: 100%;
   min-width: 350px;
   margin: 30px auto;
   text-align: center;
 }
+
 .colors th {
   background-color: #999;
 }
-.colors td{
+
+.colors td {
   width: 25%;
   height: 3em;
 }
@@ -193,13 +187,16 @@ p {
 .primary {
   background-color: var(--primary-color);
 }
+
 .secondary {
   background-color: var(--secondary-color);
 }
+
 .accent1 {
   background-color: var(--accent1-color);
 }
-.accent2{
+
+.accent2 {
   background-color: var(--accent2-color);
 }
 
@@ -214,21 +211,23 @@ nav {
   text-align: center;
   font-size: 1.2em;
 }
-nav  {
+
+nav {
   list-style-type: none;
   display: flex;
-
 }
+
 nav a {
   padding:1em;
   min-width: 120px;
   text-decoration: none;
   padding: 10px;
-
 }
+
 nav a:link, nav a:visited {
   color: var(--nav-link-color);
 }
+
 nav a:hover {
   color: var(--nav-hover-link-color);
   background-color: var(--nav-hover-background-color);
@@ -237,29 +236,31 @@ nav a:hover {
 .sitemap {
   display: grid;
   justify-content: center;
-
   grid-template-columns: repeat(6, 15%);
   grid-template-rows: 3em 1.5em 1.5em 3em;
-  grid-template-areas: ". . home home . ."
+  grid-template-areas:
+    ". . home home . ."
     ". . . top . ."
     ". left left right right ."
     "page2 page2 . . page3 page3";
 }
+
 .sitemap > div {
-
   text-align: center;
-
 }
+
 .sm-home {
   grid-area: home;
   background-color: #ccc;
   line-height: 3em;
 }
+
 .sm-page2 {
   grid-area: page2;
   background-color: #ccc;
   line-height: 3em;
 }
+
 .sm-page3 {
   grid-area: page3;
   background-color: #ccc;
