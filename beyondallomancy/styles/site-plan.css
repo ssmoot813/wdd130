@@ -1,18 +1,18 @@
 /* ----------------------------------------------------
    GOOGLE FONTS
-   ---------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Lora');
+---------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:wght@400;700&display=swap');
 
 
 /* ----------------------------------------------------
    COLOR VARIABLES
-   ---------------------------------------------------- */
+---------------------------------------------------- */
 :root {
-  --primary-color: #0B1D51;        /* Deep Cosmere blue */
-  --secondary-color: #c0c0c0;      /* Light silver */
-  --accent1-color: #BFA5E3;        /* Soft purple */
-  --accent2-color: #FFD700;        /* Gold */
-  --accent3-color: #6B2E91;        /* Deep violet */
+  --primary-color: #0B1D51;
+  --secondary-color: #c0c0c0;
+  --accent1-color: #BFA5E3;
+  --accent2-color: #FFD700;
+  --accent3-color: #6B2E91;
 
   --heading-font: "Cinzel Decorative", serif;
   --paragraph-font: "Lora", serif;
@@ -23,22 +23,17 @@
   --paragraph-color-on-white: #2F2F2F;
   --paragraph-color-on-color: #FFFFFF;
 
-  --nav-background-color: #0B1D51;
-  --nav-link-color: #FFD700;
-  --nav-hover-background-color: #6B2E91;
-  --nav-hover-link-color: #FFFFFF;
-
-  --footer-bg: #0B1D51;
+  --paragraph-background-color: #0B1D51;
 }
 
 
 /* ----------------------------------------------------
-   GLOBAL RESETS & BASE TYPOGRAPHY
-   ---------------------------------------------------- */
+   GLOBAL STYLES
+---------------------------------------------------- */
 body {
   margin: 0;
-  background-color: #f7f7f7;
   font-family: var(--paragraph-font);
+  background-color: white;
   color: var(--paragraph-color-on-white);
   line-height: 1.6;
 }
@@ -51,58 +46,57 @@ img {
 h1, h2, h3 {
   font-family: var(--heading-font);
   color: var(--headline-color-on-white);
-  text-align: center;
 }
 
 
 /* ----------------------------------------------------
-   HEADER & NAVIGATION
-   ---------------------------------------------------- */
+   HEADER + NAVIGATION
+---------------------------------------------------- */
 header {
   background-color: var(--primary-color);
-  padding: 20px;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .logo {
-  height: 80px;
+  height: 70px;
 }
 
 nav {
   display: flex;
-  gap: 25px;
+  gap: 1.5rem;
 }
 
 nav a {
-  color: var(--nav-link-color);
+  color: var(--accent2-color);
   text-decoration: none;
-  font-size: 1.2rem;
+  font-family: var(--heading-font);
+  font-size: 1.1rem;
   padding: 8px 12px;
-  border-radius: 6px;
-  transition: 0.3s;
+  border-radius: 5px;
+  transition: 0.3s ease;
 }
 
 nav a:hover {
-  background-color: var(--nav-hover-background-color);
-  color: var(--nav-hover-link-color);
+  background-color: var(--accent3-color);
+  color: white;
 }
 
 
 /* ----------------------------------------------------
    HERO SECTION
-   ---------------------------------------------------- */
+---------------------------------------------------- */
 .hero {
-  background: linear-gradient(
-      rgba(11, 29, 81, 0.7),
-      rgba(11, 29, 81, 0.7)
-    ),
-    url("../images/cosmere.jpg") center/cover no-repeat;
-  padding: 120px 20px;
-  color: white;
   text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    rgba(11, 29, 81, 0.7),
+    rgba(11, 29, 81, 0.7)
+  ),
+  url("../images/cosmere.jpg") center/cover no-repeat;
+  color: var(--paragraph-color-on-color);
 }
 
 .hero h1 {
@@ -112,66 +106,59 @@ nav a:hover {
 
 .hero p {
   font-size: 1.3rem;
-  color: #eee;
+  color: white;
 }
 
 
 /* ----------------------------------------------------
    INTRO SECTION
-   ---------------------------------------------------- */
+---------------------------------------------------- */
 .intro {
   max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  border-left: 8px solid var(--accent1-color);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 3rem auto;
+  text-align: center;
+  padding: 0 1rem;
 }
 
-.intro p {
-  font-size: 1.15rem;
-  text-align: center;
+.intro h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 
 /* ----------------------------------------------------
-   IMAGE GRID (3-PANEL SECTION)
-   ---------------------------------------------------- */
+   IMAGE GRID
+---------------------------------------------------- */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  padding: 40px;
-  max-width: 1100px;
-  margin: 0 auto 60px auto;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .image-grid img {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
-}
-
-.image-grid img:hover {
-  transform: scale(1.04);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 
 /* ----------------------------------------------------
    FOOTER
-   ---------------------------------------------------- */
+---------------------------------------------------- */
 footer {
-  background-color: var(--footer-bg);
+  background-color: var(--primary-color);
   color: var(--headline-color-on-color);
   text-align: center;
-  padding: 25px;
-  margin-top: 50px;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
 }
 
 footer a {
   color: var(--accent2-color);
   text-decoration: none;
+  font-weight: bold;
 }
 
 footer a:hover {
@@ -180,17 +167,16 @@ footer a:hover {
 
 
 /* ----------------------------------------------------
-   RESPONSIVE DESIGN
-   ---------------------------------------------------- */
+   RESPONSIVE ADJUSTMENTS
+---------------------------------------------------- */
 @media (max-width: 900px) {
-  nav {
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
   .image-grid {
     grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .hero h1 {
