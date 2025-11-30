@@ -43,7 +43,7 @@ body {
    HEADER
 ---------------------------------------------------- */
 .site-header {
-  background-color: var(--nav-bg);
+  background-color: var(--accent3-color);
   padding: 1rem;
   display: flex;
   align-items: center;
