@@ -200,6 +200,11 @@ body {
   line-height: 1.7;
 }
 
+.hero-allomancy {
+  background-image: url("../images/allomancy_hero.jpg");
+}
+
+
 /* ----------------------------------------------------
    IMAGE GRID
 ---------------------------------------------------- */
