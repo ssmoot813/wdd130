@@ -74,7 +74,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   HOME PAGE GRID (Option A)
+   HOME PAGE GRID
 ---------------------------------------------------- */
 .home-grid {
   display: grid;
@@ -85,24 +85,50 @@ body {
 }
 
 /* ----------------------------------------------------
-   HERO SECTION
+   HERO SECTION WITH BACKGROUND IMAGE
 ---------------------------------------------------- */
+
 .hero {
-  background-color: var(--accent1-color);
-  padding: 3rem 2rem;
-  border-radius: 10px;
-  text-align: center;
+  position: relative;
+  height: 350px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../images/cosmere_hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
   font-family: var(--heading-font);
-  color: var(--primary-color);
-  font-size: 2.6rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--accent2-color);
+  margin-bottom: 0.5rem;
 }
 
 .hero p {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #ffffff;
 }
 
