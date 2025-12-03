@@ -37,18 +37,16 @@ body {
   font-family: var(--paragraph-font);
   background-color: var(--primary-color);
   color: var(--paragraph-color);
+  overflow-x: hidden;
 }
 
+/* Wraps all page content on every page */
 .page-wrap {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   position: relative;
   z-index: 2;
-}
-
-section {
-  margin-bottom: 3rem;
 }
 
 /* ----------------------------------------------------
@@ -62,23 +60,16 @@ section {
   justify-content: space-between;
   position: relative;
   box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
+  z-index: 10;
 }
 
-.site-header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: 0 0 60px rgba(255, 215, 0, 0.25);
-  z-index: -1;
+.logo {
+  height: 80px;
 }
 
 /* ----------------------------------------------------
    NAVIGATION
 ---------------------------------------------------- */
-.logo {
-  height: 80px;
-}
-
 .main-nav {
   display: flex;
   gap: 2rem;
@@ -100,6 +91,67 @@ section {
 }
 
 /* ----------------------------------------------------
+   HAMBURGER MENU (Mobile)
+---------------------------------------------------- */
+.hamburger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: url("../images/cosmere-hamburger.png") center/contain no-repeat;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* MOBILE NAVIGATION */
+@media screen and (max-width: 700px) {
+
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .main-nav {
+    overflow: hidden;
+    max-height: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--accent3-color);
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
+  }
+
+  .main-nav.open {
+    max-height: 300px;
+  }
+
+  .main-nav a {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* DESKTOP NAVIGATION */
+@media screen and (min-width: 701px) {
+  .main-nav {
+    display: flex !important;
+    max-height: none !important;
+  }
+}
+
+/* ----------------------------------------------------
    HERO SECTION
 ---------------------------------------------------- */
 .hero {
@@ -111,8 +163,10 @@ section {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  background-image: url("../images/cosmere_hero.jpg");
   background-size: cover;
   background-position: center;
+  margin-bottom: 2.5rem;
   overflow: hidden;
 }
 
@@ -123,8 +177,7 @@ section {
   background: rgba(0, 0, 0, 0.45);
 }
 
-.hero h1,
-.hero p {
+.hero h1, .hero p {
   position: relative;
   z-index: 2;
 }
@@ -137,7 +190,6 @@ section {
 
 .hero p {
   font-size: 1.4rem;
-  color: #fff;
 }
 
 .hero-allomancy {
@@ -152,7 +204,7 @@ section {
   padding: 2.5rem;
   border-radius: 14px;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 2.5rem auto;
   text-align: center;
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 }
@@ -165,7 +217,6 @@ section {
 
 .intro p {
   color: #000;
-  font-size: 1.15rem;
   line-height: 1.7;
 }
 
@@ -176,6 +227,7 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  margin: 2.5rem 0;
 }
 
 .image-grid img {
@@ -187,30 +239,11 @@ section {
 }
 
 /* ----------------------------------------------------
-   FOOTER
----------------------------------------------------- */
-.site-footer {
-  margin-top: 4rem;
-  text-align: center;
-  padding: 1.5rem;
-  background-color: var(--primary-color);
-  border-radius: 8px;
-}
-
-.site-footer a {
-  color: var(--accent2-color);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* ----------------------------------------------------
-   SLIDESHOW
+   SLIDESHOW SECTION
 ---------------------------------------------------- */
 .container {
   position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 .mySlides {
@@ -219,37 +252,22 @@ section {
 
 .mySlides img {
   width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
+  border-radius: 10px;
 }
 
-.prev,
-.next {
+.prev, .next {
   cursor: pointer;
   position: absolute;
   top: 40%;
   padding: 16px;
+  font-size: 20px;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  user-select: none;
 }
 
 .next {
   right: 0;
-}
-
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.numbertext {
-  color: #f2f2f2;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
 }
 
 .caption-container {
@@ -260,55 +278,33 @@ section {
   margin-bottom: 1rem;
 }
 
-.column {
-  float: left;
-  width: 16.66%;
-}
-
-.demo {
-  opacity: 0.6;
-  transition: 0.3s ease;
-}
-
-.demo.active {
-  opacity: 1;
-  box-shadow: 0 0 12px var(--accent2-color),
-              0 0 20px rgba(255, 215, 0, 0.35);
-  border-radius: 6px;
-  transform: scale(1.05);
-}
-
-.demo:hover {
-  opacity: 1;
-  transform: scale(1.03);
-}
-
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* ----------------------------------------------------
-   MIST EFFECT (Allomancy Only)
----------------------------------------------------- */
-.mist-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  background-image: url("../images/mist-particles.png");
-  background-repeat: repeat;
-  opacity: 0.3;
-  pointer-events: none;
-  animation: mistMove 45s linear infinite;
-  z-index: 0;
+.column {
+  float: left;
+  width: 20%;
 }
 
-@keyframes mistMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.demo {
+  opacity: 0.6;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.demo.active {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px var(--accent2-color));
+}
+
+.demo:hover {
+  opacity: 1;
+  transform: scale(1.03);
 }
 
 /* ----------------------------------------------------
@@ -343,76 +339,47 @@ section {
 }
 
 /* ----------------------------------------------------
-   HAMBURGER (Mobile)
+   FOOTER
 ---------------------------------------------------- */
-.hamburger {
-  display: none;
-  width: 40px;
-  height: 40px;
-  background: url("../images/cosmere-hamburger.png") center/contain no-repeat;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-@media screen and (max-width: 700px) {
-
-  .hamburger {
-    display: block;
-    margin-left: auto;
-  }
-
-  .main-nav {
-    overflow: hidden;
-    max-height: 0;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 1rem;
-    border-radius: 10px;
-    background-color: var(--accent3-color);
-  }
-
-  .main-nav.open {
-    max-height: 300px;
-  }
-
-  .main-nav a {
-    padding: 1rem;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .image-grid {
-    grid-template-columns: 1fr;
-  }
-
-  section {
-    margin-bottom: 2.5rem;
-  }
+.site-footer {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--primary-color);
+  border-radius: 8px;
 }
 
 /* ----------------------------------------------------
-   DESKTOP RESET
+   MIST (ALLOMANCY PAGE ONLY)
 ---------------------------------------------------- */
-@media screen and (min-width: 701px) {
-  .main-nav {
-    display: flex;
-    gap: 2rem;
-    max-height: none !important;
-  }
+.mist-overlay {
+  position: fixed;
+  inset: 0;
+  width: 200%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("../images/mist-particles.png");
+  background-repeat: repeat;
+  opacity: 0.3;
+  animation: mistMove 45s linear infinite;
+  z-index: 0;
+}
+
+@keyframes mistMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* ----------------------------------------------------
-   STARFIELD (Home Page Only)
+   STARFIELD (HOME PAGE ONLY)
 ---------------------------------------------------- */
 .cosmere-stars {
-  background-color: #0B1D51;
+  background-color: var(--primary-color);
 }
 
 #starCanvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
