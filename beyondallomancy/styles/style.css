@@ -385,3 +385,72 @@ body {
   pointer-events: none;
   z-index: 0;
 }
+
+/* OTHER MAGIC SYSTEMS HERO */
+.hero-others {
+    background-image: url("../images/other_magic_systems_hero.jpg");
+    background-size: cover;
+    background-position: center;
+}
+/* ---------------------------------------------
+   ANIMATED COSMERE GLYPH DIVIDER (Spark + Pulse)
+----------------------------------------------*/
+
+.glyph-divider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.glyph-divider img {
+    width: 70px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+    animation: glyphPulse 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes glyphPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(255,215,0,0.7));
+    }
+    50% {
+        transform: scale(1.12);
+        filter: drop-shadow(0 0 22px rgba(255,215,0,1));
+    }
+}
+
+
+.glyph-divider::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, rgba(255,215,0,0.9) 0%, transparent 60%),
+        radial-gradient(circle, rgba(255,215,0,0.7) 0%, transparent 70%),
+        radial-gradient(circle, rgba(255,215,0,1) 0%, transparent 55%);
+
+    background-size: 6px 6px, 4px 4px, 3px 3px;
+    background-repeat: no-repeat;
+
+    animation: sparkFlicker 1.8s infinite steps(3);
+    opacity: 0.9;
+}
+
+@keyframes sparkFlicker {
+    0% { background-position: 20px 40px, 60px 10px, 80px 60px; }
+    25% { background-position: 40px 80px, 10px 60px, 50px 20px; }
+    50% { background-position: 70px 50px, 20px 20px, 90px 40px; }
+    75% { background-position: 10px 30px, 80px 70px, 30px 90px; }
+    100% { background-position: 20px 40px, 60px 10px, 80px 60px; }
+}

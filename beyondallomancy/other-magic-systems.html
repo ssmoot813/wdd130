@@ -8,58 +8,84 @@
 </head>
 
 <body>
-<header>
-    <a id="logo_link" href="index.html">
+
+<div class="page-wrap">
+
+<header class="site-header">
+    <a href="index.html" class="logo-link">
         <img class="logo" src="images/Beyond-Allomancy-Logo.png" alt="Beyond Allomancy logo">
     </a>
-    <nav>
+
+    <button class="hamburger" id="hamburger"></button>
+
+    <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="allomancy.html">Allomancy</a>
-        <a href="other-magic-systems.html">Other Magic Systems</a>
+        <a href="other-magic-systems.html" class="active">Other Magic Systems</a>
     </nav>
 </header>
 
 <main>
 
-    <section class="hero">
-        <h1>Other Magic Systems</h1>
-        <p>Explore Investiture across the Cosmere.</p>
+    <section class="hero hero-others">
+        <div class="hero-content">
+            <h1>Other Magic Systems</h1>
+            <p>Explore the many manifestations of Investiture across the Cosmere.</p>
+        </div>
     </section>
 
     <section class="magic-block">
         <h2>AonDor (Elantris)</h2>
         <img src="images/aondor.jpg" alt="AonDor magic symbols glowing">
         <p>
-            AonDor is powered by written glowing symbols called Aons. The magic is shaped by geography and the user's
-            understanding of the symbols. It allows for a variety of effects, from healing to elemental manipulation.
+            AonDor is powered by glowing symbols called Aons. The magic is shaped by geography and 
+            the user's understanding of the symbols, allowing effects such as healing, energy projection, 
+            and environmental manipulation.
         </p>
     </section>
 
+    <div class="glyph-divider">
+    <img src="images/glyph-divider.png" alt="Cosmere glyph divider">
+</div>
+
+
     <section class="magic-block">
         <h2>Awakening (Warbreaker)</h2>
-        <img src="images/awakening.jpg" alt="Visualization of BioChromatic Breath Awakening">
+        <img src="images/awakening.jpg" alt="BioChromatic Breath Awakening">
         <p>
-            Awakening uses Breath and color to animate objects, grant abilities, and forge powerful Commands.
-            This allows the awakener to bring inanimate objects to life, imbuing them with purpose and function.
+            Awakening uses Breath and color to animate objects, enhance abilities, or create sentient constructs. 
+            Commands and Intent are crucial to shaping the magic.
         </p>
     </section>
+    
+    <div class="glyph-divider">
+    <img src="images/glyph-divider.png" alt="Cosmere glyph divider">
+</div>
+
 
     <section class="magic-block">
         <h2>Surgebinding (Stormlight Archive)</h2>
         <img src="images/knight_radiant.jpg" alt="Knight Radiant glowing with Stormlight">
         <p>
-            Surgebinders manipulate fundamental forces—like gravity and pressure—powered by Stormlight. Different orders
-            of Knights Radiant have unique abilities tied to specific Surges, enabling feats such as flight, healing, and enhanced strength.
-            Once bonded with a spren, Surgebinders can access these powers and grow stronger over time after swearing Ideals.
+            Surgebinders manipulate fundamental natural forces using Stormlight. Each Order of Knights Radiant
+            binds to specific Surges, enabling abilities like gravity manipulation, healing, adhesion, and more.
         </p>
     </section>
 
 </main>
 
-<footer>
+<footer class="site-footer">
     <p>© 2025 Beyond Allomancy</p>
     <p><a href="site-plan.html">View Site Plan</a></p>
 </footer>
+
+</div>
+
+<script>
+document.getElementById("hamburger").addEventListener("click", function () {
+    document.getElementById("mainNav").classList.toggle("open");
+});
+</script>
 
 </body>
 </html>
