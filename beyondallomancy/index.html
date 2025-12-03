@@ -9,10 +9,14 @@
 
 <body>
 
+<div class="mist-overlay"></div>
+
 <header class="site-header">
     <a href="index.html" class="logo-link">
         <img src="images/Beyond-Allomancy-Logo.png" class="logo" alt="Beyond Allomancy logo">
     </a>
+
+    <button class="hamburger" onclick="toggleMenu()"></button>
 
     <nav class="main-nav">
         <a href="index.html">Home</a>
@@ -24,13 +28,11 @@
 <main class="home-grid">
 
     <section class="hero">
-    <div class="hero-content">
-        <h1>Explore the Cosmere</h1>
-        <p>The interconnected fantasy universe created by Brandon Sanderson.</p>
-    </div>
-</section>
-
-
+        <div class="hero-content">
+            <h1>Explore the Cosmere</h1>
+            <p>The interconnected fantasy universe created by Brandon Sanderson.</p>
+        </div>
+    </section>
 
     <section class="intro">
         <h2>Welcome to Beyond Allomancy</h2>
@@ -54,6 +56,12 @@
     <p>© 2025 Beyond Allomancy</p>
     <p><a href="site-plan.html">View Site Plan</a></p>
 </footer>
+
+<script>
+function toggleMenu() {
+  document.querySelector(".main-nav").classList.toggle("open");
+}
+</script>
 
 </body>
 </html>
