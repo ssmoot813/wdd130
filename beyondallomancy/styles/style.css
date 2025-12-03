@@ -337,6 +337,9 @@ body > *:not(.mist-overlay) {
 /* ----------------------------------------------------
    COSMERE HAMBURGER ICON + PULSE ANIMATION
 ---------------------------------------------------- */
+.hamburger {
+  background-size: 100% 100%;
+}
 
 .hamburger {
   display: none;
@@ -382,8 +385,8 @@ body > *:not(.mist-overlay) {
   }
 
   .site-header {
-    flex-direction: column;
-    gap: 0.6rem;
+  flex-direction: row;
+  justify-content: space-between;
   }
 
   .main-nav {
