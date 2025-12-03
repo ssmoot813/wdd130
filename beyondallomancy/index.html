@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body>
+<body class="cosmere-stars">
+    <canvas id="starCanvas"></canvas>
 
-<div class="mist-overlay"></div>
 
 <header class="site-header">
     <a href="index.html" class="logo-link">
@@ -60,6 +60,71 @@
 <script>
 function toggleMenu() {
   document.querySelector(".main-nav").classList.toggle("open");
+}
+</script>
+<script>
+if (document.body.classList.contains("cosmere-stars")) {
+
+  const canvas = document.getElementById("starCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let stars = [];
+  const numStars = 120;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.8 + 0.5,
+      alpha: Math.random(),
+      twinkleSpeed: Math.random() * 0.02 + 0.005
+    });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    stars.forEach(star => {
+      star.alpha += star.twinkleSpeed * (Math.random() > 0.5 ? 1 : -1);
+      star.alpha = Math.max(0.2, Math.min(1, star.alpha));
+
+      ctx.globalAlpha = star.alpha;
+      ctx.fillStyle = "gold";
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    drawConstellationLines();
+    requestAnimationFrame(drawStars);
+  }
+
+  function drawConstellationLines() {
+    ctx.globalAlpha = 0.25;
+    ctx.strokeStyle = "gold";
+    ctx.lineWidth = 0.6;
+
+    stars.forEach(s1 => {
+      stars.forEach(s2 => {
+        const dist = Math.hypot(s1.x - s2.x, s1.y - s2.y);
+        if (dist < 120 && Math.random() < 0.0009) {
+          ctx.beginPath();
+          ctx.moveTo(s1.x, s1.y);
+          ctx.lineTo(s2.x, s2.y);
+          ctx.stroke();
+        }
+      });
+    });
+  }
+
+  drawStars();
 }
 </script>
 
