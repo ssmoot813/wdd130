@@ -18,14 +18,15 @@
         <img src="images/Beyond-Allomancy-Logo.png" class="logo" alt="Beyond Allomancy logo">
     </a>
 
-    <button class="hamburger" onclick="toggleMenu()"></button>
+    <button class="hamburger" id="hamburger"></button>
 
-    <nav class="main-nav">
+    <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="allomancy.html">Allomancy</a>
         <a href="other-magic-systems.html">Other Magic Systems</a>
     </nav>
 </header>
+
 
 <main class="home-grid">
 
@@ -62,75 +63,49 @@
 </div>
 
 <script>
-function toggleMenu() {
-  document.querySelector(".main-nav").classList.toggle("open");
-}
+document.getElementById("hamburger").addEventListener("click", function () {
+    document.getElementById("mainNav").classList.toggle("open");
+});
 </script>
 
 <script>
-if (document.body.classList.contains("cosmere-stars")) {
+const canvas = document.getElementById("starCanvas");
+const ctx = canvas.getContext("2d");
 
-  const canvas = document.getElementById("starCanvas");
-  const ctx = canvas.getContext("2d");
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const stars = [];
-  const numStars = 120;
-
-  for (let i = 0; i < numStars; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.8 + 0.5,
-      alpha: Math.random(),
-      twinkleSpeed: Math.random() * 0.02 + 0.005
-    });
-  }
-
-  function drawConstellationLines() {
-    ctx.globalAlpha = 0.25;
-    ctx.strokeStyle = "gold";
-    ctx.lineWidth = 0.6;
-
-    stars.forEach(s1 => {
-      stars.forEach(s2 => {
-        const dist = Math.hypot(s1.x - s2.x, s1.y - s2.y);
-        if (dist < 120 && Math.random() < 0.0009) {
-          ctx.beginPath();
-          ctx.moveTo(s1.x, s1.y);
-          ctx.lineTo(s2.x, s2.y);
-          ctx.stroke();
-        }
-      });
-    });
-  }
-
-  function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    stars.forEach(star => {
-      star.alpha += star.twinkleSpeed * (Math.random() > 0.5 ? 1 : -1);
-      star.alpha = Math.max(0.2, Math.min(1, star.alpha));
-      ctx.globalAlpha = star.alpha;
-
-      ctx.fillStyle = "gold";
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    drawConstellationLines();
-    requestAnimationFrame(drawStars);
-  }
-
-  drawStars();
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const stars = Array.from({ length: 140 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  size: Math.random() * 1.7 + 0.4,
+  brightness: Math.random(),
+  twinkleSpeed: Math.random() * 0.015 + 0.005
+}));
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach(star => {
+    star.brightness += star.twinkleSpeed;
+    if (star.brightness > 1 || star.brightness < 0) {
+      star.twinkleSpeed *= -1;
+    }
+
+    ctx.fillStyle = `rgba(255, 215, 0, ${star.brightness})`;
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animateStars);
+}
+
+animateStars();
 </script>
 
 </body>

@@ -39,7 +39,7 @@ body {
   color: var(--paragraph-color);
 }
 
-
+/* Fix missing margins/layout */
 .page-wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -47,7 +47,6 @@ body {
   position: relative;
   z-index: 2;
 }
-
 
 /* ----------------------------------------------------
    HEADER
@@ -222,19 +221,14 @@ body {
   cursor: pointer;
   position: absolute;
   top: 40%;
-  width: auto;
   padding: 16px;
-  margin-top: -50px;
   color: white;
   font-weight: bold;
   font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
 }
 
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
 
 .prev:hover,
@@ -244,7 +238,6 @@ body {
 
 .numbertext {
   color: #f2f2f2;
-  font-size: 12px;
   padding: 8px 12px;
   position: absolute;
   top: 0;
@@ -253,15 +246,9 @@ body {
 .caption-container {
   text-align: center;
   background-color: #222;
-  padding: 2px 16px;
+  padding: 6px 16px;
   color: white;
   margin-bottom: 1rem;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 .column {
@@ -276,7 +263,7 @@ body {
 
 .demo.active {
   opacity: 1;
-  box-shadow: 0 0 12px var(--accent2-color), 
+  box-shadow: 0 0 12px var(--accent2-color),
               0 0 20px rgba(255, 215, 0, 0.35);
   border-radius: 6px;
   transform: scale(1.05);
@@ -284,13 +271,11 @@ body {
 
 .demo:hover {
   opacity: 1;
-  box-shadow: 0 0 10px var(--accent2-color);
-  border-radius: 6px;
   transform: scale(1.03);
 }
 
 /* ----------------------------------------------------
-   MIST EFFECT
+   MIST EFFECT (ALLOMANCY PAGE ONLY)
 ---------------------------------------------------- */
 .mist-overlay {
   position: fixed;
@@ -311,11 +296,6 @@ body {
   to { transform: translateX(-50%); }
 }
 
-body > *:not(.mist-overlay) {
-  position: relative;
-  z-index: 2;
-}
-
 /* ----------------------------------------------------
    SECTION DIVIDER
 ---------------------------------------------------- */
@@ -325,7 +305,6 @@ body > *:not(.mist-overlay) {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.9;
 }
 
 .section-divider::before,
@@ -340,19 +319,17 @@ body > *:not(.mist-overlay) {
   width: 40px;
   height: 40px;
   margin: 0 1rem;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
   animation: coinPulse 2.2s infinite ease-in-out;
 }
 
 @keyframes coinPulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(255,215,0,0.5)); }
-  50% { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(255,215,0,0.9)); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
 }
 
 /* ----------------------------------------------------
    HAMBURGER MENU (Mobile)
 ---------------------------------------------------- */
-
 .hamburger {
   display: none;
   width: 40px;
@@ -374,11 +351,10 @@ body > *:not(.mist-overlay) {
     overflow: hidden;
     max-height: 0;
     flex-direction: column;
-    background-color: var(--accent3-color);
     width: 100%;
     margin-top: 1rem;
     border-radius: 10px;
-    box-shadow: 0 0 12px rgba(255,215,0,0.4);
+    background-color: var(--accent3-color);
   }
 
   .main-nav.open {
@@ -389,19 +365,16 @@ body > *:not(.mist-overlay) {
     padding: 1rem;
     text-align: center;
     width: 100%;
-    font-size: 1.1rem;
     border-top: 1px solid rgba(255,255,255,0.15);
-  }
-
-  .main-nav a:hover {
-    background-color: var(--nav-bg);
-    color: white;
   }
 
   .site-header {
     flex-direction: column;
     gap: 0.5rem;
-    padding: 1rem 0;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -409,32 +382,21 @@ body > *:not(.mist-overlay) {
    DESKTOP HEADER RESET
 ---------------------------------------------------- */
 @media screen and (min-width: 701px) {
-  .site-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .main-nav {
     display: flex;
     gap: 2rem;
     max-height: none !important;
   }
-}
 
-@media screen and (max-width: 700px) {
-  .image-grid {
-    grid-template-columns: 1fr !important;
+  .site-header {
+    flex-direction: row;
+    align-items: center;
   }
 }
+
 /* ----------------------------------------------------
    COSMERE STARFIELD (Home Page Only)
 ---------------------------------------------------- */
-
-html, body {
-  min-height: 100%;
-  overflow-x: hidden;
-}
 
 .cosmere-stars {
   background-color: #0B1D51;
@@ -444,13 +406,8 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 0;
-}
-
-.cosmere-stars > *:not(#starCanvas) {
-  position: relative;
-  z-index: 2;
 }
