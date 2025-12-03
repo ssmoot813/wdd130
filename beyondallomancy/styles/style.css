@@ -203,7 +203,9 @@ body {
   font-weight: bold;
 }
 
-
+/* ----------------------------------------------------
+   SLIDESHOW COMPONENT
+---------------------------------------------------- */
 .container {
   position: relative;
 }
@@ -270,12 +272,24 @@ body {
 
 .demo {
   opacity: 0.6;
+  transition: 0.3s ease;
 }
 
-.active,
+.demo.active {
+  opacity: 1;
+  box-shadow: 0 0 12px var(--accent2-color), 
+              0 0 20px rgba(255, 215, 0, 0.35);
+  border-radius: 6px;
+  transform: scale(1.05);
+}
+
 .demo:hover {
   opacity: 1;
+  box-shadow: 0 0 10px var(--accent2-color);
+  border-radius: 6px;
+  transform: scale(1.03);
 }
+
 .mist-overlay {
   position: fixed;
   top: 0;
@@ -299,4 +313,3 @@ body > *:not(.mist-overlay) {
   position: relative;
   z-index: 2;
 }
-
