@@ -10,7 +10,7 @@
 <body>
 
 <div class="mist-overlay"></div>
->
+
 <div class="page-wrap">
 
 <header class="site-header">
@@ -28,11 +28,11 @@
 </header>
 
 
-<main>
+<main class="home-grid">
 
     <section class="hero hero-allomancy">
         <h1>Allomancy</h1>
-        <p>The metal-based magic system from the Mistborn series.</p>
+        <p>The metal-based magic system from the <em>Mistborn</em> series.</p>
     </section>
 
 
@@ -43,27 +43,27 @@
 
             <div class="mySlides">
                 <div class="numbertext">1 / 5</div>
-                <img src="images/steelpush.jpg" style="width:100%" alt="Steelpush - Coinshot in action">
+                <img src="images/steelpush.jpg" alt="Steelpush - Coinshot in action">
             </div>
 
             <div class="mySlides">
                 <div class="numbertext">2 / 5</div>
-                <img src="images/ironpull.jpg" style="width:100%" alt="Ironpull - Lurcher pulling metal">
+                <img src="images/ironpull.jpg" alt="Ironpull - Lurcher pulling metal">
             </div>
 
             <div class="mySlides">
                 <div class="numbertext">3 / 5</div>
-                <img src="images/bendalloy.jpg" style="width:100%" alt="Bendalloy speed bubble">
+                <img src="images/bendalloy.jpg" alt="Bendalloy speed bubble">
             </div>
 
             <div class="mySlides">
                 <div class="numbertext">4 / 5</div>
-                <img src="images/duralumin.jpg" style="width:100%" alt="Duralumin burst of power">
+                <img src="images/duralumin.jpg" alt="Duralumin burst of power">
             </div>
 
             <div class="mySlides">
                 <div class="numbertext">5 / 5</div>
-                <img src="images/atium.jpg" style="width:100%" alt="Atium future shadows">
+                <img src="images/atium.jpg" alt="Atium future shadows">
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -90,6 +90,7 @@
                     <img class="demo cursor" src="images/atium.jpg" onclick="currentSlide(5)" alt="Atium Shadows">
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -98,12 +99,13 @@
         <img src="images/coin-divider.png" alt="Cosmere coin divider">
     </div>
 
-
+>
     <section class="intro allomancy-intro">
         <h2>How Allomancy Works</h2>
         <p>
-            Allomancers ingest trace flakes of specific metals and burn them internally to unlock magical abilities.
-            Each metal grants a unique effect—such as enhanced strength, emotional manipulation, or metal pushing.
+            Allomancers ingest trace flakes of specific metals and “burn” them internally to unlock magical abilities.
+            Each metal grants a unique effect—such as enhanced strength, emotional manipulation, or metal pushing. When combined
+            with duralumin, the effects are amplified dramatically.
         </p>
     </section>
 
@@ -118,7 +120,7 @@
         <p>
             Allomancy is built around pairs of metals with opposite effects, such as Steel and Iron or Pewter and Tin.
             Most Allomancers, called Mistings, can burn only one metal. Rare individuals known as Mistborn can burn all
-            the basic metals, making them incredibly powerful.
+            the basic metals, giving them a wide range of abilities and making them incredibly powerful.
         </p>
     </section>
 
@@ -140,41 +142,51 @@
 </div>
 
 
-<!-- ----------------------------------------------------
-     SLIDESHOW SCRIPT
----------------------------------------------------- -->
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) { showSlides(slideIndex += n); }
-function currentSlide(n) { showSlides(slideIndex = n); }
-
-function showSlides(n) {
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("demo");
-  const captionText = document.getElementById("caption");
-
-  if (n > slides.length) { slideIndex = 1; }
-  if (n < 1) { slideIndex = slides.length; }
-
-  for (let slide of slides) slide.style.display = "none";
-  for (let dot of dots) dot.classList.remove("active");
-
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].classList.add("active");
-  captionText.innerHTML = dots[slideIndex - 1].alt;
-}
-</script>
-
-
-<!-- ----------------------------------------------------
-     MOBILE NAV SCRIPT
----------------------------------------------------- -->
+<!-- -----------------------------
+     HAMBURGER MENU JS
+---------------------------------->
 <script>
 document.getElementById("hamburger").addEventListener("click", function () {
     document.getElementById("mainNav").classList.toggle("open");
 });
+</script>
+
+<!-- -----------------------------
+     SLIDESHOW JS
+---------------------------------->
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  captionText.innerHTML = dots[slideIndex - 1].alt;
+}
 </script>
 
 </body>
