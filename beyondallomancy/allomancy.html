@@ -15,11 +15,18 @@
         <img class="logo" src="images/Beyond-Allomancy-Logo.png" alt="Beyond Allomancy logo">
     </a>
 
-    <nav class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="allomancy.html">Allomancy</a>
-        <a href="other-magic-systems.html">Other Magic Systems</a>
-    </nav>
+<button class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<nav class="main-nav" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="allomancy.html">Allomancy</a>
+    <a href="other-magic-systems.html">Other Magic Systems</a>
+</nav>
+
 </header>
 
 <main class="home-grid">
@@ -158,6 +165,12 @@ function showSlides(n) {
   dots[slideIndex - 1].className += " active";
   captionText.innerHTML = dots[slideIndex - 1].alt;
 }
+
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+  document.querySelector(".hamburger").classList.toggle("open");
+}
+
 </script>
 
 </body>
