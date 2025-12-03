@@ -39,13 +39,31 @@ body {
   color: var(--paragraph-color);
 }
 
-/* Fix missing margins/layout */
 .page-wrap {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  position: relative;
-  z-index: 2;
+}
+
+/* ----------------------------------------------------
+   GLOBAL SECTION SPACING
+---------------------------------------------------- */
+main {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.image-grid {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.allomancy-gallery {
+  margin-bottom: 3rem;
 }
 
 /* ----------------------------------------------------
@@ -188,9 +206,9 @@ body {
    FOOTER
 ---------------------------------------------------- */
 .site-footer {
-  margin-top: 4rem;
   text-align: center;
   padding: 1.5rem;
+  margin-top: 4rem;
   background-color: var(--primary-color);
   border-radius: 8px;
 }
@@ -202,7 +220,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   SLIDESHOW COMPONENT
+   SLIDESHOW / GALLERY
 ---------------------------------------------------- */
 .container {
   position: relative;
@@ -212,9 +230,7 @@ body {
   display: none;
 }
 
-.cursor {
-  cursor: pointer;
-}
+.cursor { cursor: pointer; }
 
 .prev,
 .next {
@@ -227,9 +243,7 @@ body {
   font-size: 20px;
 }
 
-.next {
-  right: 0;
-}
+.next { right: 0; }
 
 .prev:hover,
 .next:hover {
@@ -248,7 +262,6 @@ body {
   background-color: #222;
   padding: 6px 16px;
   color: white;
-  margin-bottom: 1rem;
 }
 
 .column {
@@ -275,7 +288,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   MIST EFFECT (ALLOMANCY PAGE ONLY)
+   MIST EFFECT (ALLOMANCY ONLY)
 ---------------------------------------------------- */
 .mist-overlay {
   position: fixed;
@@ -328,7 +341,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   HAMBURGER MENU (Mobile)
+   HAMBURGER MENU (MOBILE)
 ---------------------------------------------------- */
 .hamburger {
   display: none;
@@ -395,9 +408,8 @@ body {
 }
 
 /* ----------------------------------------------------
-   COSMERE STARFIELD (Home Page Only)
+   COSMERE STARFIELD (HOME ONLY)
 ---------------------------------------------------- */
-
 .cosmere-stars {
   background-color: #0B1D51;
 }
@@ -410,4 +422,9 @@ body {
   height: 100vh;
   pointer-events: none;
   z-index: 0;
+}
+
+body, .page-wrap, main, section, header, footer {
+  position: relative;
+  z-index: 2;
 }

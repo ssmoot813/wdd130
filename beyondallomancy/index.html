@@ -28,7 +28,7 @@
 </header>
 
 
-<main class="home-grid">
+<main>
 
     <section class="hero">
         <div class="hero-content">
@@ -55,6 +55,7 @@
 
 </main>
 
+
 <footer class="site-footer">
     <p>© 2025 Beyond Allomancy</p>
     <p><a href="site-plan.html">View Site Plan</a></p>
@@ -62,12 +63,19 @@
 
 </div>
 
+
+<!-- ----------------------------------------------------
+     MOBILE NAV SCRIPT
+---------------------------------------------------- -->
 <script>
 document.getElementById("hamburger").addEventListener("click", function () {
     document.getElementById("mainNav").classList.toggle("open");
 });
 </script>
 
+<!-- ----------------------------------------------------
+     STARFIELD SCRIPT
+---------------------------------------------------- -->
 <script>
 const canvas = document.getElementById("starCanvas");
 const ctx = canvas.getContext("2d");
