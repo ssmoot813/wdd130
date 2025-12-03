@@ -39,6 +39,8 @@ body {
   font-family: var(--paragraph-font);
   background-color: var(--primary-color);
   color: var(--paragraph-color);
+  position: relative;
+  z-index: 2;
 }
 
 /* ----------------------------------------------------
@@ -72,6 +74,7 @@ body {
 .main-nav {
   display: flex;
   gap: 2rem;
+  transition: max-height 0.4s ease-out;
 }
 
 .main-nav a {
@@ -86,16 +89,6 @@ body {
   color: var(--nav-hover-text);
   padding: 0.5rem 1rem;
   border-radius: 5px;
-}
-
-/* ----------------------------------------------------
-   HOME PAGE GRID
----------------------------------------------------- */
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 3rem;
 }
 
 /* ----------------------------------------------------
@@ -223,11 +216,9 @@ body {
   cursor: pointer;
   position: absolute;
   top: 40%;
-  width: auto;
   padding: 16px;
   margin-top: -50px;
   color: white;
-  font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -245,7 +236,6 @@ body {
 
 .numbertext {
   color: #f2f2f2;
-  font-size: 12px;
   padding: 8px 12px;
   position: absolute;
   top: 0;
@@ -277,7 +267,7 @@ body {
 
 .demo.active {
   opacity: 1;
-  box-shadow: 0 0 12px var(--accent2-color), 
+  box-shadow: 0 0 12px var(--accent2-color),
               0 0 20px rgba(255, 215, 0, 0.35);
   border-radius: 6px;
   transform: scale(1.05);
@@ -290,6 +280,9 @@ body {
   transform: scale(1.03);
 }
 
+/* ----------------------------------------------------
+   MIST OVERLAY
+---------------------------------------------------- */
 .mist-overlay {
   position: fixed;
   top: 0;
@@ -306,7 +299,7 @@ body {
 
 @keyframes mistMove {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
 
 body > *:not(.mist-overlay) {
@@ -314,13 +307,15 @@ body > *:not(.mist-overlay) {
   z-index: 2;
 }
 
+/* ----------------------------------------------------
+   SECTION DIVIDERS
+---------------------------------------------------- */
 .section-divider {
   width: 100%;
   margin: 3rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   opacity: 0.9;
 }
 
@@ -329,12 +324,7 @@ body > *:not(.mist-overlay) {
   content: "";
   flex: 1;
   height: 2px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--accent2-color),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--accent2-color), transparent);
 }
 
 .section-divider img {
@@ -343,59 +333,66 @@ body > *:not(.mist-overlay) {
   margin: 0 1rem;
   filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
 }
+
 /* ----------------------------------------------------
-   HAMBURGER MENU (Mobile)
+   COSMERE HAMBURGER ICON + PULSE ANIMATION
 ---------------------------------------------------- */
 
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 6px;
-  background: none;
+  width: 42px;
+  height: 42px;
+  background: url("../images/cosmere-hamburger-icon.png") center/cover no-repeat;
   border: none;
   cursor: pointer;
-  padding: 0.25rem;
-  position: relative;
   z-index: 1000;
+  animation: hamburgerPulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
 }
 
-.hamburger span {
-  width: 28px;
-  height: 3px;
-  background: var(--accent2-color);
-  border-radius: 4px;
-  transition: 0.3s;
+@keyframes hamburgerPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
+  }
+  50% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.85));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
+  }
 }
 
-.hamburger.open span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+.hamburger.open {
+  animation: none;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 16px rgba(255, 215, 0, 1));
 }
 
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-.main-nav {
-  transition: max-height 0.4s ease-out;
-}
-
+/* ----------------------------------------------------
+   MOBILE MENU BEHAVIOR
+---------------------------------------------------- */
 @media screen and (max-width: 700px) {
 
   .hamburger {
-    display: flex;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
   .main-nav {
     overflow: hidden;
     max-height: 0;
     flex-direction: column;
-    background-color: var(--accent3-color);
     width: 100%;
     margin-top: 1rem;
+    background-color: var(--accent3-color);
     border-radius: 10px;
     box-shadow: 0 0 12px rgba(255,215,0,0.4);
   }
@@ -408,18 +405,19 @@ body > *:not(.mist-overlay) {
     padding: 1rem;
     text-align: center;
     width: 100%;
-    font-size: 1.1rem;
     border-top: 1px solid rgba(255,255,255,0.15);
   }
 
   .main-nav a:hover {
     background-color: var(--nav-bg);
-    color: white;
+    color: #fff;
   }
 
-  .site-header {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem 0;
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid img {
+    height: 200px;
   }
 }
