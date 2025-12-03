@@ -23,6 +23,64 @@
 
 <main class="home-grid">
 
+    <section class="allomancy-gallery">
+        <h2 class="gallery-title">Allomancy in Action</h2>
+
+        <div class="container">
+
+            <div class="mySlides">
+                <div class="numbertext">1 / 5</div>
+                <img src="images/steelpush.jpg" style="width:100%" alt="Steelpush - Coinshot in action">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 5</div>
+                <img src="images/ironpull.jpg" style="width:100%" alt="Ironpull - Lurcher pulling metal">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 5</div>
+                <img src="images/bendalloy.jpg" style="width:100%" alt="Bendalloy speed bubble">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">4 / 5</div>
+                <img src="images/duralumin.jpg" style="width:100%" alt="Duralumin burst of power">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">5 / 5</div>
+                <img src="images/atium.jpg" style="width:100%" alt="Atium future shadows">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <img class="demo cursor" src="images/steelpush.jpg" style="width:100%" onclick="currentSlide(1)" alt="Steelpush">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/ironpull.jpg" style="width:100%" onclick="currentSlide(2)" alt="Ironpull">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/bendalloy.jpg" style="width:100%" onclick="currentSlide(3)" alt="Bendalloy Bubble">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/duralumin.jpg" style="width:100%" onclick="currentSlide(4)" alt="Duralumin Burst">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/atium.jpg" style="width:100%" onclick="currentSlide(5)" alt="Atium Shadows">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="hero hero-allomancy">
         <h1>Allomancy</h1>
         <p>The metal-based magic system from the Mistborn series.</p>
@@ -48,7 +106,7 @@
     <section class="image-grid">
         <img src="images/allomancer.jpg" alt="Illustration of an Allomancer burning metals">
         <img src="images/coin.jpg" alt="A coin pushed through Allomancy">
-        <img src="images/allomantic_vials.jpg" alt="Vials of allomantic metals">
+        <img src="images/vials.jpg" alt="Vials of allomantic metals">
     </section>
 
 </main>
@@ -57,6 +115,43 @@
     <p>© 2025 Beyond Allomancy</p>
     <p><a href="site-plan.html">View Site Plan</a></p>
 </footer>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  captionText.innerHTML = dots[slideIndex - 1].alt;
+}
+</script>
 
 </body>
 </html>
