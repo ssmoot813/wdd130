@@ -313,3 +313,33 @@ body > *:not(.mist-overlay) {
   position: relative;
   z-index: 2;
 }
+
+.section-divider {
+  width: 100%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  opacity: 0.9;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent2-color),
+    transparent
+  );
+}
+
+.section-divider img {
+  width: 40px;
+  height: 40px;
+  margin: 0 1rem;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+}
