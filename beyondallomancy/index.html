@@ -8,8 +8,10 @@
 </head>
 
 <body class="cosmere-stars">
-    <canvas id="starCanvas"></canvas>
 
+<canvas id="starCanvas"></canvas>
+
+<div class="page-wrap">
 
 <header class="site-header">
     <a href="index.html" class="logo-link">
@@ -57,19 +59,19 @@
     <p><a href="site-plan.html">View Site Plan</a></p>
 </footer>
 
+</div>
+
 <script>
 function toggleMenu() {
   document.querySelector(".main-nav").classList.toggle("open");
 }
 </script>
+
 <script>
 if (document.body.classList.contains("cosmere-stars")) {
 
   const canvas = document.getElementById("starCanvas");
   const ctx = canvas.getContext("2d");
-
-  let stars = [];
-  const numStars = 120;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -77,6 +79,9 @@ if (document.body.classList.contains("cosmere-stars")) {
   }
   resize();
   window.addEventListener("resize", resize);
+
+  const stars = [];
+  const numStars = 120;
 
   for (let i = 0; i < numStars; i++) {
     stars.push({
@@ -86,24 +91,6 @@ if (document.body.classList.contains("cosmere-stars")) {
       alpha: Math.random(),
       twinkleSpeed: Math.random() * 0.02 + 0.005
     });
-  }
-
-  function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    stars.forEach(star => {
-      star.alpha += star.twinkleSpeed * (Math.random() > 0.5 ? 1 : -1);
-      star.alpha = Math.max(0.2, Math.min(1, star.alpha));
-
-      ctx.globalAlpha = star.alpha;
-      ctx.fillStyle = "gold";
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    drawConstellationLines();
-    requestAnimationFrame(drawStars);
   }
 
   function drawConstellationLines() {
@@ -122,6 +109,24 @@ if (document.body.classList.contains("cosmere-stars")) {
         }
       });
     });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    stars.forEach(star => {
+      star.alpha += star.twinkleSpeed * (Math.random() > 0.5 ? 1 : -1);
+      star.alpha = Math.max(0.2, Math.min(1, star.alpha));
+      ctx.globalAlpha = star.alpha;
+
+      ctx.fillStyle = "gold";
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    drawConstellationLines();
+    requestAnimationFrame(drawStars);
   }
 
   drawStars();

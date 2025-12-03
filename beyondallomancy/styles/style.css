@@ -33,12 +33,17 @@
 }
 
 body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   font-family: var(--paragraph-font);
   background-color: var(--primary-color);
   color: var(--paragraph-color);
+}
+
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 /* ----------------------------------------------------
@@ -423,22 +428,26 @@ body > *:not(.mist-overlay) {
    COSMERE STARFIELD (Home Page Only)
 ---------------------------------------------------- */
 
+html, body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 .cosmere-stars {
   background-color: #0B1D51;
-  overflow: hidden;
 }
 
 #starCanvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
 
-.cosmere-stars > * {
+.cosmere-stars > *:not(#starCanvas) {
   position: relative;
   z-index: 2;
 }
