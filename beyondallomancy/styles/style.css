@@ -276,3 +276,27 @@ body {
 .demo:hover {
   opacity: 1;
 }
+.mist-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("../images/mist-particles.png");
+  background-repeat: repeat;
+  opacity: 0.3;
+  animation: mistMove 45s linear infinite;
+  z-index: 0;
+}
+
+@keyframes mistMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+body > *:not(.mist-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
