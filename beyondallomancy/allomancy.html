@@ -18,11 +18,11 @@
         <img class="logo" src="images/Beyond-Allomancy-Logo.png" alt="Beyond Allomancy logo">
     </a>
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation"></button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"></button>
 
     <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
-        <a href="allomancy.html" class="active">Allomancy</a>
+        <a href="allomancy.html">Allomancy</a>
         <a href="other-magic-systems.html">Other Magic Systems</a>
     </nav>
 </header>
@@ -72,18 +72,28 @@
             </div>
 
             <div class="row">
-                <div class="column"><img class="demo cursor" src="images/steelpush.jpg" onclick="currentSlide(1)" alt="Steelpush"></div>
-                <div class="column"><img class="demo cursor" src="images/ironpull.jpg" onclick="currentSlide(2)" alt="Ironpull"></div>
-                <div class="column"><img class="demo cursor" src="images/bendalloy.jpg" onclick="currentSlide(3)" alt="Bendalloy Bubble"></div>
-                <div class="column"><img class="demo cursor" src="images/duralumin.jpg" onclick="currentSlide(4)" alt="Duralumin Burst"></div>
-                <div class="column"><img class="demo cursor" src="images/atium.jpg" onclick="currentSlide(5)" alt="Atium Shadows"></div>
+                <div class="column">
+                    <img class="demo cursor" src="images/steelpush.jpg" onclick="currentSlide(1)" alt="Steelpush">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/ironpull.jpg" onclick="currentSlide(2)" alt="Ironpull">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/bendalloy.jpg" onclick="currentSlide(3)" alt="Bendalloy Bubble">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/duralumin.jpg" onclick="currentSlide(4)" alt="Duralumin Burst">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="images/atium.jpg" onclick="currentSlide(5)" alt="Atium Shadows">
+                </div>
             </div>
 
         </div>
     </section>
 
     <div class="glyph-divider">
-        <img src="images/glyph-divider.png" alt="">
+        <img src="images/coin-divider.png" alt="Cosmere coin divider">
     </div>
 
     <section class="intro allomancy-intro">
@@ -92,12 +102,13 @@
             Allomancers ingest trace flakes of specific metals and “burn” them internally to unlock magical abilities.
             Each metal grants a unique effect—such as enhanced strength, emotional manipulation, or metal pushing.
             When a Mistborn uses Duralumin, it supercharges their next metal burn, resulting in a powerful burst of energy.
-            However, it also wipes out their entire reserve of that metal, requiring precision and careful timing.
+            However, using Duralumin also instantly consumes their reserves of that metal, so Allomancy requires precise
+            control and planning to be used effectively.
         </p>
     </section>
 
     <div class="glyph-divider">
-        <img src="images/glyph-divider.png" alt="">
+        <img src="images/coin-divider.png" alt="Cosmere coin divider">
     </div>
 
     <section class="intro allomancy-metals">
@@ -134,8 +145,13 @@ document.getElementById("hamburger").addEventListener("click", function () {
 let slideIndex = 1;
 showSlides(slideIndex);
 
-function plusSlides(n) { showSlides(slideIndex += n); }
-function currentSlide(n) { showSlides(slideIndex = n); }
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
 function showSlides(n) {
   let i;
@@ -143,15 +159,20 @@ function showSlides(n) {
   const dots = document.getElementsByClassName("demo");
   const captionText = document.getElementById("caption");
 
-  if (n > slides.length) slideIndex = 1;
-  if (n < 1) slideIndex = slides.length;
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
 
-  for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
-  for (i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
 
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
-  captionText.innerHTML = dots[slideIndex - 1].alt;
+  captionText.textContent = dots[slideIndex - 1].alt;
 }
 </script>
 

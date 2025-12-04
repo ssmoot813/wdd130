@@ -48,6 +48,13 @@ body {
   z-index: 2;
 }
 
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
 /* ----------------------------------------------------
    HEADER
 ---------------------------------------------------- */
@@ -134,6 +141,10 @@ body {
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.15);
   }
+
+  .image-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 @media screen and (min-width: 701px) {
@@ -184,9 +195,17 @@ body {
   font-size: 1.4rem;
 }
 
-.hero-home { background-image: url("../images/cosmere_hero.jpg"); }
-.hero-allomancy { background-image: url("../images/allomancy_hero.jpg"); }
-.hero-others { background-image: url("../images/other_magic_systems_hero.jpg"); }
+.hero-home {
+  background-image: url("../images/cosmere_hero.jpg");
+}
+
+.hero-allomancy {
+  background-image: url("../images/allomancy_hero.jpg");
+}
+
+.hero-others {
+  background-image: url("../images/other_magic_systems_hero.jpg");
+}
 
 .hero-others::after {
   content: "";
@@ -194,17 +213,18 @@ body {
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
-      120deg,
-      rgba(255, 217, 0, 0.15),
-      rgba(176, 131, 240, 0.15),
-      rgba(255, 20, 20, 0.15)
-    );
+    120deg,
+    rgba(255, 217, 0, 0.15),
+    rgba(176, 131, 240, 0.15),
+    rgba(255, 20, 20, 0.15),
+    rgba(45, 136, 163, 0.15)
+  );
   mix-blend-mode: screen;
   animation: heroGlow 14s ease-in-out infinite alternate;
 }
 
 @keyframes heroGlow {
-  0% { opacity: 0.25; }
+  0%   { opacity: 0.25; }
   100% { opacity: 0.45; }
 }
 
@@ -230,6 +250,110 @@ body {
 .intro p {
   color: #000;
   line-height: 1.7;
+}
+
+/* ----------------------------------------------------
+   IMAGE GRID
+---------------------------------------------------- */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
+
+/* ----------------------------------------------------
+   SLIDESHOW (W3SCHOOLS-STYLE)
+---------------------------------------------------- */
+.container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  padding: 16px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  user-select: none;
+}
+
+.next { right: 0; }
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 6px 16px;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 20%;
+}
+
+.demo {
+  opacity: 0.6;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.demo.active {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px var(--accent2-color));
+}
+
+.demo:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.gallery-title {
+  text-align: center;
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ----------------------------------------------------
@@ -267,12 +391,59 @@ body {
 
 @keyframes glyphPulse {
   0%, 100% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.12); opacity: 1; }
+  50%      { transform: scale(1.12); opacity: 1;    }
 }
 
 /* ----------------------------------------------------
-   OTHER MAGIC SYSTEMS BACKGROUND
+   FOOTER
 ---------------------------------------------------- */
+.site-footer {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+}
+
+/* ----------------------------------------------------
+   PAGE BACKGROUNDS: HOME (STARFIELD) & ALLOMANCY (MIST)
+---------------------------------------------------- */
+
+.cosmere-stars {
+  background-color: var(--primary-color);
+}
+
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mist-overlay {
+  position: fixed;
+  inset: 0;
+  width: 200%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("../images/mist-particles.png");
+  background-repeat: repeat;
+  opacity: 0.3;
+  animation: mistMove 45s linear infinite;
+  z-index: 0;
+}
+
+@keyframes mistMove {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ----------------------------------------------------
+   OTHER MAGIC SYSTEMS – BACKGROUND + FLOATING GLYPHS
+---------------------------------------------------- */
+
 .other-magic {
   background-color: var(--primary-color);
   overflow-x: hidden;
@@ -288,21 +459,18 @@ body {
   background:
     radial-gradient(circle at 18% 28%, rgba(255, 217, 0, 0.336), transparent 60%),
     radial-gradient(circle at 78% 22%, rgba(152, 116, 202, 0.452), transparent 65%),
-    radial-gradient(circle at 30% 78%, rgba(145, 46, 46, 0.685), transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(20, 220, 255, 0.24), transparent 65%);
+    radial-gradient(circle at 30% 78%, rgba(145, 46, 46, 0.685),  transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(20, 220, 255, 0.24),  transparent 65%);
 
   animation: ambientShift 45s ease-in-out infinite alternate;
   opacity: 0.55;
 }
 
 @keyframes ambientShift {
-  0% { transform: translate(0,0); }
+  0%   { transform: translate(0,0); }
   100% { transform: translate(-2%,2%); }
 }
 
-/* ----------------------------------------------------
-   FLOATING SILVER GLYPHS
----------------------------------------------------- */
 .glyph-layer {
   position: fixed;
   inset: 0;
@@ -326,15 +494,15 @@ body {
   100% { transform: translate(0,0) rotate(0deg); }
 }
 
-.glyph-1 { background-image: url("../images/glyph-one.png"); top: 12%; left: 18%; }
-.glyph-2 { background-image: url("../images/glyph-two.png"); top: 46%; left: 70%; }
+.glyph-1 { background-image: url("../images/glyph-one.png");   top: 12%; left: 18%; }
+.glyph-2 { background-image: url("../images/glyph-two.png");   top: 46%; left: 70%; }
 .glyph-3 { background-image: url("../images/glyph-three.png"); top: 78%; left: 25%; }
-.glyph-4 { background-image: url("../images/glyph-four.png"); top: 22%; left: 82%; }
-.glyph-5 { background-image: url("../images/glyph-five.png"); top: 65%; left: 10%; }
-.glyph-6 { background-image: url("../images/glyph-six.png"); top: 35%; left: 45%; }
+.glyph-4 { background-image: url("../images/glyph-four.png");  top: 22%; left: 82%; }
+.glyph-5 { background-image: url("../images/glyph-five.png");  top: 65%; left: 10%; }
+.glyph-6 { background-image: url("../images/glyph-six.png");   top: 35%; left: 45%; }
 
 /* ----------------------------------------------------
-   MAGIC BLOCK
+   MAGIC BLOCK (OTHER MAGIC SYSTEMS)
 ---------------------------------------------------- */
 .magic-block {
   max-width: 900px;
@@ -363,15 +531,4 @@ body {
 .magic-block p {
   font-size: 1.05rem;
   line-height: 1.7;
-}
-
-/* ----------------------------------------------------
-   FOOTER
----------------------------------------------------- */
-.site-footer {
-  margin-top: 4rem;
-  text-align: center;
-  padding: 1.5rem;
-  background-color: var(--primary-color);
-  border-radius: 8px;
 }

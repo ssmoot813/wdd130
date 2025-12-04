@@ -21,13 +21,13 @@
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"></button>
 
     <nav class="main-nav" id="mainNav">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="allomancy.html">Allomancy</a>
         <a href="other-magic-systems.html">Other Magic Systems</a>
     </nav>
 </header>
 
-<main>
+<main class="home-grid">
 
     <section class="hero hero-home">
         <div class="hero-content">
@@ -42,7 +42,7 @@
             The Cosmere is a shared universe linking many of Brandon Sanderson’s most beloved series,
             including <em>Mistborn</em>, <em>The Stormlight Archive</em>, <em>Elantris</em>, and
             <em>Warbreaker</em>. This site helps readers understand how the planets, magic systems,
-            and characters are connected. This is a fan created site, and is not tied in with
+            and characters are connected. This is a fan-created site and is not affiliated with
             Brandon Sanderson or his publishers.
         </p>
     </section>
@@ -79,7 +79,8 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-const stars = Array.from({ length: 140 }, () => ({
+const STAR_COUNT = 140;
+const stars = Array.from({ length: STAR_COUNT }, () => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
   size: Math.random() * 1.7 + 0.4,
@@ -87,17 +88,69 @@ const stars = Array.from({ length: 140 }, () => ({
   twinkleSpeed: Math.random() * 0.015 + 0.005
 }));
 
+const CONSTELLATION_COLORS = [
+  [255, 215, 0],
+  [191, 165, 227],
+  [230, 230, 230]
+];
+
+function createConstellation() {
+  const length = Math.floor(Math.random() * 3) + 4;
+  const indices = [];
+  while (indices.length < length) {
+    const idx = Math.floor(Math.random() * STAR_COUNT);
+    if (!indices.includes(idx)) indices.push(idx);
+  }
+  return {
+    indices,
+    t: Math.random(),
+    speed: 0.002 + Math.random()*0.002,
+    colorIndex: Math.floor(Math.random() * CONSTELLATION_COLORS.length)
+  };
+}
+
+const constellations = [
+  createConstellation(),
+  createConstellation(),
+  createConstellation()
+];
+
 function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   stars.forEach(star => {
     star.brightness += star.twinkleSpeed;
-    if (star.brightness > 1 || star.brightness < 0) star.twinkleSpeed *= -1;
+    if (star.brightness > 1 || star.brightness < 0) {
+      star.twinkleSpeed *= -1;
+    }
 
-    ctx.fillStyle = `rgba(255,215,0,${star.brightness})`;
+    ctx.fillStyle = `rgba(255, 215, 0, ${star.brightness})`;
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
     ctx.fill();
+  });
+
+  constellations.forEach(c => {
+    c.t += c.speed;
+    if (c.t > 1) {
+      Object.assign(c, createConstellation());
+      return;
+    }
+
+    const [r, g, b] = CONSTELLATION_COLORS[c.colorIndex];
+    const alpha = Math.sin(c.t * Math.PI) * 0.4; 
+
+    ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    ctx.lineWidth = 0.8;
+
+    ctx.beginPath();
+    const firstStar = stars[c.indices[0]];
+    ctx.moveTo(firstStar.x, firstStar.y);
+    for (let i = 1; i < c.indices.length; i++) {
+      const s = stars[c.indices[i]];
+      ctx.lineTo(s.x, s.y);
+    }
+    ctx.stroke();
   });
 
   requestAnimationFrame(animateStars);
