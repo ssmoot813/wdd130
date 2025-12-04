@@ -532,3 +532,25 @@ body {
   font-size: 1.05rem;
   line-height: 1.7;
 }
+
+#nebulaCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  filter: blur(28px);
+  opacity: 0.85;
+  mix-blend-mode: screen; 
+}
+
+
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}

@@ -80,57 +80,44 @@ function resizeNebula() {
 resizeNebula();
 window.addEventListener("resize", resizeNebula);
 
-const nebulaColors = [
-  "rgba(255, 217, 0, 0.16)",
-  "rgba(191, 165, 227, 0.17)",
-  "rgba(107, 46, 145, 0.18)",
-  "rgba(20, 220, 255, 0.14)"
+const layers = [
+  { color: "rgba(255, 217, 0, 0.18)", x: 0.15, y: 0.35, radius: 420, shiftX: 0.4, shiftY: 0.3, hueSpeed: 0.04 },
+  { color: "rgba(191, 165, 227, 0.20)", x: 0.80, y: 0.20, radius: 470, shiftX: -0.3, shiftY: 0.5, hueSpeed: 0.035 },
+  { color: "rgba(107, 46, 145, 0.22)", x: 0.25, y: 0.75, radius: 460, shiftX: 0.6, shiftY: -0.4, hueSpeed: 0.05 },
+  { color: "rgba(20, 220, 255, 0.18)", x: 0.88, y: 0.78, radius: 440, shiftX: -0.5, shiftY: -0.3, hueSpeed: 0.03 }
 ];
 
-const nebulaPositions = [
-  { x: 0.07, y: 0.30 },
-  { x: 0.10, y: 0.75 },
-  { x: 0.93, y: 0.35 },
-  { x: 0.88, y: 0.80 }
-];
+let globalShift = 0;
 
 function drawNebula() {
   nebCtx.clearRect(0, 0, nebulaCanvas.width, nebulaCanvas.height);
 
-  nebulaColors.forEach((color, i) => {
-    const pos = nebulaPositions[i];
+  layers.forEach((layer, i) => {
+    const x = nebulaCanvas.width * layer.x + Math.sin(globalShift * layer.shiftX) * 30;
+    const y = nebulaCanvas.height * layer.y + Math.cos(globalShift * layer.shiftY) * 30;
 
-    const gradient = nebCtx.createRadialGradient(
-      nebulaCanvas.width * pos.x,
-      nebulaCanvas.height * pos.y,
-      60,
-      nebulaCanvas.width * pos.x,
-      nebulaCanvas.height * pos.y,
-      460
-    );
+    const hue = (globalShift * layer.hueSpeed * 180) % 360;
+    nebCtx.fillStyle = layer.color;
+    nebCtx.globalCompositeOperation = "lighter";
 
-    gradient.addColorStop(0, color);
+    const gradient = nebCtx.createRadialGradient(x, y, 80, x, y, layer.radius);
+    gradient.addColorStop(0, `hsla(${hue}, 85%, 65%, 0.55)`);
     gradient.addColorStop(1, "transparent");
 
     nebCtx.fillStyle = gradient;
-    nebCtx.globalAlpha = 0.8;
     nebCtx.fillRect(0, 0, nebulaCanvas.width, nebulaCanvas.height);
   });
 }
 
-let shift = 0;
 function animateNebula() {
-  shift += 0.0005;
-
-  nebCtx.setTransform(1, 0, 0, 1, 0, 0);
-  nebCtx.translate(Math.sin(shift) * 10, Math.cos(shift) * 12);
-
+  globalShift += 0.0025;
   drawNebula();
   requestAnimationFrame(animateNebula);
 }
 
 animateNebula();
 </script>
+
 
 <script>
 const starCanvas = document.getElementById("starCanvas");
