@@ -454,3 +454,102 @@ body {
     75% { background-position: 10px 30px, 80px 70px, 30px 90px; }
     100% { background-position: 20px 40px, 60px 10px, 80px 60px; }
 }
+/* ----------------------------------------------------
+   OTHER MAGIC SYSTEMS – COMBINED INVESTITURE BACKGROUND
+---------------------------------------------------- */
+
+.other-magic {
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+}
+
+.other-magic .page-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.investiture-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(circle at 10% 20%, rgba(191,165,227,0.18) 0, transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(255,215,0,0.14) 0, transparent 60%),
+    radial-gradient(circle at 25% 80%, rgba(107,46,145,0.20) 0, transparent 55%),
+    radial-gradient(circle at 70% 75%, rgba(255,255,255,0.13) 0, transparent 55%);
+  opacity: 0.55;
+  animation: investitureFlow 45s linear infinite;
+}
+
+.investiture-overlay::before,
+.investiture-overlay::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    repeating-linear-gradient(
+      120deg,
+      rgba(255,215,0,0.18) 0,
+      rgba(255,215,0,0.18) 2px,
+      transparent 3px,
+      transparent 10px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.22;
+  animation: surgeDrift 60s linear infinite;
+}
+
+.investiture-overlay::after {
+  animation-duration: 80s;
+  animation-direction: reverse;
+  opacity: 0.16;
+}
+
+@keyframes investitureFlow {
+  0%   { transform: translate3d(0,    0,   0); }
+  50%  { transform: translate3d(-3%, -1%, 0); }
+  100% { transform: translate3d(0,    0,   0); }
+}
+
+@keyframes surgeDrift {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(10%, -5%, 0) rotate(6deg); }
+}
+
+/* ----------------------------------------------------
+   MAGIC BLOCK STYLING (OTHER MAGIC SYSTEMS)
+---------------------------------------------------- */
+
+.magic-block {
+  max-width: 900px;
+  margin: 0 auto 2.5rem auto;
+  background-color: rgba(11, 29, 81, 0.85);
+  border-radius: 14px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.magic-block h2 {
+  font-family: var(--heading-font);
+  color: var(--accent2-color);
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.magic-block img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  display: block;
+  margin: 1.5rem auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+}
+
+.magic-block p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
