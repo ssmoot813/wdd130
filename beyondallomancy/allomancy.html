@@ -22,7 +22,7 @@
 
     <nav class="main-nav" id="mainNav">
         <a href="index.html">Home</a>
-        <a href="allomancy.html">Allomancy</a>
+        <a href="allomancy.html" class="active">Allomancy</a>
         <a href="other-magic-systems.html">Other Magic Systems</a>
     </nav>
 </header>
@@ -82,23 +82,22 @@
         </div>
     </section>
 
-    <div class="section-divider">
-        <img src="images/coin-divider.png" alt="">
+    <div class="glyph-divider">
+        <img src="images/glyph-divider.png" alt="">
     </div>
 
     <section class="intro allomancy-intro">
         <h2>How Allomancy Works</h2>
         <p>
             Allomancers ingest trace flakes of specific metals and “burn” them internally to unlock magical abilities.
-            Each metal grants a unique effect—such as enhanced strength, emotional manipulation, or metal pushing. When 
-            a mistborn uses Duralumin, it supercharges their next metal burn, resulting in a powerful burst of energy. However,
-            when a mistborn uses Duralumin, it completely wipes out their reserves of whatever metal they were burning at the same
-            time. Because of this, Allomancy requires precise control and understanding of the metals to be used effectively.
+            Each metal grants a unique effect—such as enhanced strength, emotional manipulation, or metal pushing.
+            When a Mistborn uses Duralumin, it supercharges their next metal burn, resulting in a powerful burst of energy.
+            However, it also wipes out their entire reserve of that metal, requiring precision and careful timing.
         </p>
     </section>
 
-    <div class="section-divider">
-        <img src="images/coin-divider.png" alt="">
+    <div class="glyph-divider">
+        <img src="images/glyph-divider.png" alt="">
     </div>
 
     <section class="intro allomancy-metals">
@@ -135,29 +134,20 @@ document.getElementById("hamburger").addEventListener("click", function () {
 let slideIndex = 1;
 showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+function plusSlides(n) { showSlides(slideIndex += n); }
+function currentSlide(n) { showSlides(slideIndex = n); }
 
 function showSlides(n) {
   let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("demo");
-  let captionText = document.getElementById("caption");
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("demo");
+  const captionText = document.getElementById("caption");
 
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
+  if (n > slides.length) slideIndex = 1;
+  if (n < 1) slideIndex = slides.length;
 
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
+  for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
+  for (i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
 
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";

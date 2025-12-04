@@ -21,15 +21,15 @@
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"></button>
 
     <nav class="main-nav" id="mainNav">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="allomancy.html">Allomancy</a>
         <a href="other-magic-systems.html">Other Magic Systems</a>
     </nav>
 </header>
 
-<main class="home-grid">
+<main>
 
-    <section class="hero">
+    <section class="hero hero-home">
         <div class="hero-content">
             <h1>Explore the Cosmere</h1>
             <p>The interconnected fantasy universe created by Brandon Sanderson.</p>
@@ -42,8 +42,8 @@
             The Cosmere is a shared universe linking many of Brandon Sanderson’s most beloved series,
             including <em>Mistborn</em>, <em>The Stormlight Archive</em>, <em>Elantris</em>, and
             <em>Warbreaker</em>. This site helps readers understand how the planets, magic systems,
-            and characters are connected. This is a fan created site, and is not tied in with Brandon Sanderson
-            or his publishers.
+            and characters are connected. This is a fan created site, and is not tied in with
+            Brandon Sanderson or his publishers.
         </p>
     </section>
 
@@ -92,11 +92,9 @@ function animateStars() {
 
   stars.forEach(star => {
     star.brightness += star.twinkleSpeed;
-    if (star.brightness > 1 || star.brightness < 0) {
-      star.twinkleSpeed *= -1;
-    }
+    if (star.brightness > 1 || star.brightness < 0) star.twinkleSpeed *= -1;
 
-    ctx.fillStyle = `rgba(255, 215, 0, ${star.brightness})`;
+    ctx.fillStyle = `rgba(255,215,0,${star.brightness})`;
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
     ctx.fill();

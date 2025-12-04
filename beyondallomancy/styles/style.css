@@ -40,7 +40,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Wraps all page content on every page */
 .page-wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -91,7 +90,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   HAMBURGER MENU (Mobile)
+   HAMBURGER MENU (MOBILE)
 ---------------------------------------------------- */
 .hamburger {
   display: none;
@@ -103,9 +102,7 @@ body {
   z-index: 1000;
 }
 
-/* MOBILE NAVIGATION */
 @media screen and (max-width: 700px) {
-
   .hamburger {
     display: block;
     margin-left: auto;
@@ -143,7 +140,6 @@ body {
   }
 }
 
-/* DESKTOP NAVIGATION */
 @media screen and (min-width: 701px) {
   .main-nav {
     display: flex !important;
@@ -163,7 +159,6 @@ body {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background-image: url("../images/cosmere_hero.jpg");
   background-size: cover;
   background-position: center;
   margin-bottom: 2.5rem;
@@ -192,8 +187,16 @@ body {
   font-size: 1.4rem;
 }
 
+.hero-home {
+  background-image: url("../images/cosmere_hero.jpg");
+}
+
 .hero-allomancy {
   background-image: url("../images/allomancy_hero.jpg");
+}
+
+.hero-others {
+  background-image: url("../images/other_magic_systems_hero.jpg");
 }
 
 /* ----------------------------------------------------
@@ -239,7 +242,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   SLIDESHOW SECTION
+   SLIDESHOW (W3SCHOOLS ORIGINAL)
 ---------------------------------------------------- */
 .container {
   position: relative;
@@ -266,9 +269,7 @@ body {
   user-select: none;
 }
 
-.next {
-  right: 0;
-}
+.next { right: 0; }
 
 .caption-container {
   text-align: center;
@@ -278,15 +279,15 @@ body {
   margin-bottom: 1rem;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .column {
   float: left;
   width: 20%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 .demo {
@@ -308,34 +309,36 @@ body {
 }
 
 /* ----------------------------------------------------
-   SECTION DIVIDER
+   SECTION DIVIDERS (GLYPH)
 ---------------------------------------------------- */
-.section-divider {
+.glyph-divider {
   width: 100%;
   margin: 3rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-.section-divider::before,
-.section-divider::after {
+.glyph-divider::before,
+.glyph-divider::after {
   content: "";
   flex: 1;
   height: 2px;
   background: linear-gradient(to right, transparent, var(--accent2-color), transparent);
 }
 
-.section-divider img {
-  width: 40px;
-  height: 40px;
-  margin: 0 1rem;
-  animation: coinPulse 2.2s infinite ease-in-out;
+.glyph-divider img {
+  width: 48px;
+  height: 48px;
+  margin: 0 1.2rem;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+  animation: glyphSparkle 2.4s ease-in-out infinite;
 }
 
-@keyframes coinPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+@keyframes glyphSparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.15); }
 }
 
 /* ----------------------------------------------------
@@ -350,8 +353,20 @@ body {
 }
 
 /* ----------------------------------------------------
-   MIST (ALLOMANCY PAGE ONLY)
+   PAGE BACKGROUNDS
 ---------------------------------------------------- */
+
+.cosmere-stars { background-color: var(--primary-color); }
+
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .mist-overlay {
   position: fixed;
   inset: 0;
@@ -364,100 +379,14 @@ body {
   animation: mistMove 45s linear infinite;
   z-index: 0;
 }
-
 @keyframes mistMove {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
 /* ----------------------------------------------------
-   STARFIELD (HOME PAGE ONLY)
+   OTHER MAGIC SYSTEMS – MULTICOLOR RIBBON BACKGROUND
 ---------------------------------------------------- */
-.cosmere-stars {
-  background-color: var(--primary-color);
-}
-
-#starCanvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* OTHER MAGIC SYSTEMS HERO */
-.hero-others {
-    background-image: url("../images/other_magic_systems_hero.jpg");
-    background-size: cover;
-    background-position: center;
-}
-/* ---------------------------------------------
-   ANIMATED COSMERE GLYPH DIVIDER (Spark + Pulse)
-----------------------------------------------*/
-
-.glyph-divider {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0;
-    position: relative;
-}
-
-.glyph-divider img {
-    width: 70px;
-    height: auto;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
-    animation: glyphPulse 3s ease-in-out infinite;
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes glyphPulse {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 10px rgba(255,215,0,0.7));
-    }
-    50% {
-        transform: scale(1.12);
-        filter: drop-shadow(0 0 22px rgba(255,215,0,1));
-    }
-}
-
-
-.glyph-divider::after {
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-
-    background-image:
-        radial-gradient(circle, rgba(255,215,0,0.9) 0%, transparent 60%),
-        radial-gradient(circle, rgba(255,215,0,0.7) 0%, transparent 70%),
-        radial-gradient(circle, rgba(255,215,0,1) 0%, transparent 55%);
-
-    background-size: 6px 6px, 4px 4px, 3px 3px;
-    background-repeat: no-repeat;
-
-    animation: sparkFlicker 1.8s infinite steps(3);
-    opacity: 0.9;
-}
-
-@keyframes sparkFlicker {
-    0% { background-position: 20px 40px, 60px 10px, 80px 60px; }
-    25% { background-position: 40px 80px, 10px 60px, 50px 20px; }
-    50% { background-position: 70px 50px, 20px 20px, 90px 40px; }
-    75% { background-position: 10px 30px, 80px 70px, 30px 90px; }
-    100% { background-position: 20px 40px, 60px 10px, 80px 60px; }
-}
-/* ----------------------------------------------------
-   OTHER MAGIC SYSTEMS – COMBINED INVESTITURE BACKGROUND
----------------------------------------------------- */
-
 .other-magic {
   background-color: var(--primary-color);
   overflow-x: hidden;
@@ -475,11 +404,12 @@ body {
   z-index: 0;
 
   background:
-    radial-gradient(circle at 10% 20%, rgba(191,165,227,0.18) 0, transparent 55%),
-    radial-gradient(circle at 80% 30%, rgba(255,215,0,0.14) 0, transparent 60%),
-    radial-gradient(circle at 25% 80%, rgba(107,46,145,0.20) 0, transparent 55%),
-    radial-gradient(circle at 70% 75%, rgba(255,255,255,0.13) 0, transparent 55%);
-  opacity: 0.55;
+    radial-gradient(circle at 12% 20%, rgba(191,165,227,0.32) 0, transparent 55%),
+    radial-gradient(circle at 78% 28%, rgba(255,215,0,0.28) 0, transparent 60%),
+    radial-gradient(circle at 30% 82%, rgba(107,46,145,0.30) 0, transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.20) 0, transparent 60%);
+
+  opacity: 0.75;
   animation: investitureFlow 45s linear infinite;
 }
 
@@ -491,20 +421,20 @@ body {
   background:
     repeating-linear-gradient(
       120deg,
-      rgba(255,215,0,0.18) 0,
-      rgba(255,215,0,0.18) 2px,
+      rgba(255,215,0,0.22) 0,
+      rgba(255,215,0,0.22) 2px,
       transparent 3px,
       transparent 10px
     );
   mix-blend-mode: screen;
-  opacity: 0.22;
+  opacity: 0.35;
   animation: surgeDrift 60s linear infinite;
 }
 
 .investiture-overlay::after {
   animation-duration: 80s;
   animation-direction: reverse;
-  opacity: 0.16;
+  opacity: 0.22;
 }
 
 @keyframes investitureFlow {
@@ -519,9 +449,8 @@ body {
 }
 
 /* ----------------------------------------------------
-   MAGIC BLOCK STYLING (OTHER MAGIC SYSTEMS)
+   MAGIC BLOCK (Other Magic Systems Page)
 ---------------------------------------------------- */
-
 .magic-block {
   max-width: 900px;
   margin: 0 auto 2.5rem auto;
@@ -536,15 +465,12 @@ body {
   font-family: var(--heading-font);
   color: var(--accent2-color);
   font-size: 2rem;
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 .magic-block img {
   width: 100%;
   max-width: 500px;
   border-radius: 12px;
-  display: block;
   margin: 1.5rem auto;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
 }
@@ -552,69 +478,4 @@ body {
 .magic-block p {
   font-size: 1.05rem;
   line-height: 1.7;
-}
-
-.other-magic .investiture-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  background:
-    radial-gradient(circle at 12% 20%, rgba(191,165,227,0.32) 0, transparent 55%),
-    radial-gradient(circle at 78% 28%, rgba(255,215,0,0.28) 0, transparent 60%),
-    radial-gradient(circle at 30% 82%, rgba(107,46,145,0.30) 0, transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.20) 0, transparent 60%);
-
-  opacity: 0.75;
-  animation: investitureFlow 45s linear infinite;
-}
-
-.other-magic .investiture-overlay::before,
-.other-magic .investiture-overlay::after {
-  opacity: 0.35;
-  background:
-    repeating-linear-gradient(
-      120deg,
-      rgba(255,215,0,0.22) 0,
-      rgba(255,215,0,0.22) 2px,
-      transparent 3px,
-      transparent 10px
-    );
-}
-
-.glyph-divider {
-  width: 100%;
-  margin: 3rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.glyph-divider::before,
-.glyph-divider::after {
-  content: "";
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--accent2-color),
-    transparent
-  );
-}
-
-.glyph-divider img {
-  width: 48px;
-  height: 48px;
-  margin: 0 1.2rem;
-  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
-  animation: glyphSparkle 2.4s ease-in-out infinite;
-}
-
-/* Soft spark animation */
-@keyframes glyphSparkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.75; transform: scale(1.15); }
 }
