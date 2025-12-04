@@ -103,7 +103,7 @@ body {
   display: none;
   width: 40px;
   height: 40px;
-  background: url("../images/cosmere-hamburger.png") center/contain no-repeat;
+  background: url("../images/cosmere-hamburger-icon.png") center/contain no-repeat;
   border: none;
   cursor: pointer;
   z-index: 1000;
