@@ -553,3 +553,68 @@ body {
   font-size: 1.05rem;
   line-height: 1.7;
 }
+
+.other-magic .investiture-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(circle at 12% 20%, rgba(191,165,227,0.32) 0, transparent 55%),
+    radial-gradient(circle at 78% 28%, rgba(255,215,0,0.28) 0, transparent 60%),
+    radial-gradient(circle at 30% 82%, rgba(107,46,145,0.30) 0, transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.20) 0, transparent 60%);
+
+  opacity: 0.75;
+  animation: investitureFlow 45s linear infinite;
+}
+
+.other-magic .investiture-overlay::before,
+.other-magic .investiture-overlay::after {
+  opacity: 0.35;
+  background:
+    repeating-linear-gradient(
+      120deg,
+      rgba(255,215,0,0.22) 0,
+      rgba(255,215,0,0.22) 2px,
+      transparent 3px,
+      transparent 10px
+    );
+}
+
+.glyph-divider {
+  width: 100%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.glyph-divider::before,
+.glyph-divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent2-color),
+    transparent
+  );
+}
+
+.glyph-divider img {
+  width: 48px;
+  height: 48px;
+  margin: 0 1.2rem;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+  animation: glyphSparkle 2.4s ease-in-out infinite;
+}
+
+/* Soft spark animation */
+@keyframes glyphSparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.15); }
+}
