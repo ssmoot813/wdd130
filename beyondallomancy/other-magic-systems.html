@@ -9,6 +9,15 @@
 
 <body class="other-magic">
 
+<div class="glyph-layer">
+    <div class="floating-glyph glyph-1"></div>
+    <div class="floating-glyph glyph-2"></div>
+    <div class="floating-glyph glyph-3"></div>
+    <div class="floating-glyph glyph-4"></div>
+    <div class="floating-glyph glyph-5"></div>
+    <div class="floating-glyph glyph-6"></div>
+</div>
+
 <div class="investiture-overlay"></div>
 
 <div class="page-wrap">
@@ -41,8 +50,8 @@
         <img src="images/aondor.jpg" alt="AonDor magic symbols glowing">
         <p>
             AonDor is powered by glowing symbols called Aons. The magic is shaped by geography and
-            the user's understanding of the symbols, allowing effects such as healing, energy projection,
-            and environmental manipulation.
+            the user's understanding of the symbols, enabling healing, energy projection,
+            and environmental effects.
         </p>
     </section>
 
@@ -54,8 +63,9 @@
         <h2>Awakening (Warbreaker)</h2>
         <img src="images/awakening.jpg" alt="BioChromatic Breath Awakening">
         <p>
-            Awakening uses Breath and color to animate objects, enhance abilities, or create sentient constructs.
-            Commands and Intent determine how the Awakened object behaves, and more Breath allows for stronger effects.
+            Awakening uses Breath and color to animate objects, empower abilities, or create
+            sentient constructs. Commands and Intent determine behavior, and more Breath provides
+            greater strength and versatility.
         </p>
     </section>
 
@@ -67,9 +77,9 @@
         <h2>Surgebinding (Stormlight Archive)</h2>
         <img src="images/knight_radiant.jpg" alt="Knight Radiant glowing with Stormlight">
         <p>
-            Surgebinders manipulate natural forces by using Stormlight. Each Order of Knights Radiant
-            bonds specific Surges, granting abilities like adhesion, gravitation, progression, and more.
-            Through swearing the Ideals, Radiants deepen their bond and unlock greater strength.
+            Surgebinders manipulate fundamental forces by using Stormlight. Each Order of Knights
+            Radiant bonds specific Surges, granting abilities such as gravitation, progression,
+            adhesion, and more. Ideals strengthen the bond and unlock deeper power.
         </p>
     </section>
 
@@ -85,6 +95,16 @@
 <script>
 document.getElementById("hamburger").addEventListener("click", function () {
     document.getElementById("mainNav").classList.toggle("open");
+});
+</script>
+
+<script>
+document.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    document.querySelectorAll('.floating-glyph').forEach((glyph, index) => {
+        const depth = (index + 1) * 0.05;
+        glyph.style.transform = `translateY(${scrollY * depth * -0.15}px)`;
+    });
 });
 </script>
 

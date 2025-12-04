@@ -134,10 +134,6 @@ body {
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.15);
   }
-
-  .image-grid {
-    grid-template-columns: 1fr !important;
-  }
 }
 
 @media screen and (min-width: 701px) {
@@ -172,7 +168,8 @@ body {
   background: rgba(0, 0, 0, 0.45);
 }
 
-.hero h1, .hero p {
+.hero h1,
+.hero p {
   position: relative;
   z-index: 2;
 }
@@ -187,16 +184,28 @@ body {
   font-size: 1.4rem;
 }
 
-.hero-home {
-  background-image: url("../images/cosmere_hero.jpg");
+.hero-home { background-image: url("../images/cosmere_hero.jpg"); }
+.hero-allomancy { background-image: url("../images/allomancy_hero.jpg"); }
+.hero-others { background-image: url("../images/other_magic_systems_hero.jpg"); }
+
+.hero-others::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+      120deg,
+      rgba(255, 217, 0, 0.15),
+      rgba(176, 131, 240, 0.15),
+      rgba(255, 20, 20, 0.15)
+    );
+  mix-blend-mode: screen;
+  animation: heroGlow 14s ease-in-out infinite alternate;
 }
 
-.hero-allomancy {
-  background-image: url("../images/allomancy_hero.jpg");
-}
-
-.hero-others {
-  background-image: url("../images/other_magic_systems_hero.jpg");
+@keyframes heroGlow {
+  0% { opacity: 0.25; }
+  100% { opacity: 0.45; }
 }
 
 /* ----------------------------------------------------
@@ -224,92 +233,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   IMAGE GRID
----------------------------------------------------- */
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 2.5rem 0;
-}
-
-.image-grid img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-}
-
-/* ----------------------------------------------------
-   SLIDESHOW (W3SCHOOLS ORIGINAL)
----------------------------------------------------- */
-.container {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.mySlides {
-  display: none;
-}
-
-.mySlides img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  padding: 16px;
-  font-size: 20px;
-  color: white;
-  font-weight: bold;
-  user-select: none;
-}
-
-.next { right: 0; }
-
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 6px 16px;
-  color: white;
-  margin-bottom: 1rem;
-}
-
-.column {
-  float: left;
-  width: 20%;
-}
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.demo {
-  opacity: 0.6;
-  width: 100%;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.demo.active {
-  opacity: 1;
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 8px var(--accent2-color));
-}
-
-.demo:hover {
-  opacity: 1;
-  transform: scale(1.03);
-}
-
-/* ----------------------------------------------------
-   SECTION DIVIDERS (GLYPH)
+   GLYPH DIVIDERS
 ---------------------------------------------------- */
 .glyph-divider {
   width: 100%;
@@ -318,94 +242,6 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-}
-
-.glyph-divider::before,
-.glyph-divider::after {
-  content: "";
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--accent2-color), transparent);
-}
-
-.glyph-divider img {
-  width: 48px;
-  height: 48px;
-  margin: 0 1.2rem;
-  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
-  animation: glyphSparkle 2.4s ease-in-out infinite;
-}
-
-@keyframes glyphSparkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.75; transform: scale(1.15); }
-}
-
-/* ----------------------------------------------------
-   FOOTER
----------------------------------------------------- */
-.site-footer {
-  margin-top: 4rem;
-  text-align: center;
-  padding: 1.5rem;
-  background-color: var(--primary-color);
-  border-radius: 8px;
-}
-
-/* ----------------------------------------------------
-   PAGE BACKGROUNDS
----------------------------------------------------- */
-
-.cosmere-stars { background-color: var(--primary-color); }
-
-#starCanvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.mist-overlay {
-  position: fixed;
-  inset: 0;
-  width: 200%;
-  height: 100%;
-  pointer-events: none;
-  background-image: url("../images/mist-particles.png");
-  background-repeat: repeat;
-  opacity: 0.3;
-  animation: mistMove 45s linear infinite;
-  z-index: 0;
-}
-@keyframes mistMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* ----------------------------------------------------
-   OTHER MAGIC SYSTEMS – MAX MAGICAL MODE BACKGROUND
-   
----------------------------------------------------- */
-
-.other-magic {
-  background-color: var(--primary-color);
-  overflow-x: hidden;
-  position: relative;
-}
-/* ----------------------------------------------------
-   1) MAX MAGIC — ARCANE GLYPH DIVIDERS
----------------------------------------------------- */
-
-.glyph-divider {
-  width: 100%;
-  margin: 3rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 2;
 }
 
 .glyph-divider::before,
@@ -422,124 +258,25 @@ body {
 }
 
 .glyph-divider img {
-  width: 60px;
-  height: 60px;
-  margin: 0 1.2rem;
-  filter: drop-shadow(0 0 10px rgba(255,215,0,0.85));
-  animation:
-    glyphPulseMax 2.6s ease-in-out infinite,
-    glyphSpin 14s linear infinite;
+  width: 56px;
+  height: 56px;
+  margin: 0 1rem;
+  filter: drop-shadow(0 0 10px rgba(255,215,0,0.55));
+  animation: glyphPulse 4.5s ease-in-out infinite;
 }
 
-@keyframes glyphPulseMax {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 10px rgba(255,215,0,1));
-  }
-  50% {
-    transform: scale(1.25);
-    filter: drop-shadow(0 0 22px rgba(255,215,0,1));
-  }
+@keyframes glyphPulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
 }
-
-@keyframes glyphSpin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* SPARK BURSTS AROUND THE GLYPH */
-.glyph-divider::after {
-  content: "";
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-
-  background-image:
-    radial-gradient(circle, rgba(255,215,0,1) 0%, transparent 50%),
-    radial-gradient(circle, rgba(255,255,255,1) 0%, transparent 60%),
-    radial-gradient(circle, rgba(191,165,227,1) 0%, transparent 50%);
-
-  background-size: 5px 5px, 4px 4px, 5px 5px;
-  background-repeat: no-repeat;
-
-  animation: glyphSparks 1.8s infinite steps(3);
-  opacity: 0.7;
-}
-
-@keyframes glyphSparks {
-  0%   { background-position: 40px 20px, 70px 80px, 20px 60px; }
-  33%  { background-position: 70px 50px, 20px 20px, 80px 30px; }
-  66%  { background-position: 15px 75px, 90px 20px, 30px 10px; }
-  100% { background-position: 40px 20px, 70px 80px, 20px 60px; }
-}
-
 
 /* ----------------------------------------------------
-   2) HERO BANNER — STORMLIGHT SHIMMER
+   OTHER MAGIC SYSTEMS BACKGROUND
 ---------------------------------------------------- */
-
-.hero-others {
+.other-magic {
+  background-color: var(--primary-color);
+  overflow-x: hidden;
   position: relative;
-}
-
-.hero-others::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-
-  background: 
-    linear-gradient(
-      115deg,
-      rgba(255, 217, 0, 0.39),
-      rgba(97, 37, 180, 0.425),
-      rgba(255, 12, 12, 0.404),
-      rgba(45, 136, 163, 0.404)
-    );
-
-  mix-blend-mode: screen;
-
-  animation:
-    stormlightWaves 18s linear infinite,
-    stormlightPulse 6s ease-in-out infinite alternate;
-}
-
-@keyframes stormlightWaves {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 40%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes stormlightPulse {
-  0%   { opacity: 0.35; }
-  50%  { opacity: 0.55; }
-  100% { opacity: 0.35; }
-}
-
-
-/* ----------------------------------------------------
-   3) FLOATING GLYPHS — AonDor / Surge / Awakening
----------------------------------------------------- */
-
-.floating-glyph {
-  position: fixed;
-  width: 45px;
-  height: 45px;
-  opacity: 0.17;
-  z-index: 0;
-  filter: drop-shadow(0 0 6px rgba(255,215,0,0.45));
-  animation: driftGlyph 38s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes driftGlyph {
-  0%   { transform: translateY(0vh) translateX(0vw) rotate(0deg); }
-  50%  { transform: translateY(-35vh) translateX(6vw) rotate(180deg); }
-  100% { transform: translateY(0vh) translateX(-6vw) rotate(360deg); }
 }
 
 .investiture-overlay {
@@ -549,93 +286,55 @@ body {
   z-index: 0;
 
   background:
-    radial-gradient(circle at 18% 28%, rgba(255, 215, 0, 0.35) 0%, transparent 60%),
-    
-    radial-gradient(circle at 82% 20%, rgba(191, 165, 227, 0.33) 0%, transparent 65%),
-    
-    radial-gradient(circle at 28% 78%, rgba(107, 46, 145, 0.38) 0%, transparent 60%),
-    
-    radial-gradient(circle at 72% 72%, rgba(255, 20, 20, 0.32) 0%, transparent 65%),
-    
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0%, transparent 70%);
+    radial-gradient(circle at 18% 28%, rgba(255,215,0,0.20), transparent 60%),
+    radial-gradient(circle at 78% 22%, rgba(191,165,227,0.20), transparent 65%),
+    radial-gradient(circle at 30% 78%, rgba(107,46,145,0.22), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255,20,20,0.18), transparent 65%);
 
-  opacity: 0.75;
-  animation:
-    arcaneDrift 45s ease-in-out infinite alternate,
-    arcanePulse 18s ease-in-out infinite;
+  animation: ambientShift 45s ease-in-out infinite alternate;
+  opacity: 0.55;
 }
 
-@keyframes arcaneDrift {
-  0%   { transform: translate3d(0%,   0%,   0) rotate(0deg); }
-  25%  { transform: translate3d(-2.5%, 1.5%, 0) rotate(1deg); }
-  50%  { transform: translate3d(2%,  -2%,  0) rotate(-1deg); }
-  75%  { transform: translate3d(-1.8%, -1%, 0) rotate(1deg); }
-  100% { transform: translate3d(2.2%, 2%,  0) rotate(-1deg); }
-}
-
-@keyframes arcanePulse {
-  0%   { filter: blur(0px) brightness(1); }
-  50%  { filter: blur(2px) brightness(1.12); }
-  100% { filter: blur(0px) brightness(1); }
+@keyframes ambientShift {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-2%,2%); }
 }
 
 /* ----------------------------------------------------
-   SPARK BURSTS (occasional tiny flares)
+   FLOATING SILVER GLYPHS
 ---------------------------------------------------- */
-
-.investiture-overlay::before {
-  content: "";
-  position: absolute;
-  inset: -10%;
-  pointer-events: none;
-
-  background-image:
-    radial-gradient(circle, rgba(255,215,0,0.9) 0%, transparent 55%),
-    radial-gradient(circle, rgba(191,165,227,0.9) 0%, transparent 60%),
-    radial-gradient(circle, rgba(255,255,255,1) 0%, transparent 50%);
-
-  background-size: 6px 6px, 4px 4px, 3px 3px;
-  background-repeat: no-repeat;
-  animation: sparkScatter 3s steps(4) infinite;
-  opacity: 0.5;
-}
-
-@keyframes sparkScatter {
-  0%   { background-position: 20% 30%, 70% 10%, 40% 80%; }
-  25%  { background-position: 50% 70%, 10% 60%, 80% 30%; }
-  50%  { background-position: 80% 40%, 20% 20%, 60% 90%; }
-  75%  { background-position: 10% 50%, 90% 70%, 30% 20%; }
-  100% { background-position: 20% 30%, 70% 10%, 40% 80%; }
-}
-
-/* ----------------------------------------------------
-   DRIFTING SPARK MOTES (Tiny floating particles)
----------------------------------------------------- */
-
-.investiture-overlay::after {
-  content: "";
-  position: absolute;
+.glyph-layer {
+  position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 65%),
-    radial-gradient(circle, rgba(255, 215, 0, 0.35) 0%, transparent 80%),
-    radial-gradient(circle, rgba(191,165,227,0.35) 0%, transparent 85%);
-
-  background-size: 3px 3px, 6px 6px, 5px 5px;
-  background-repeat: repeat;
-  animation: moteFloat 28s linear infinite;
-  opacity: 0.35;
+  z-index: 1;
 }
 
-@keyframes moteFloat {
-  0%   { transform: translateY(0) translateX(0); }
-  50%  { transform: translateY(-4%) translateX(2%); }
-  100% { transform: translateY(0) translateX(0); }
+.floating-glyph {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.22;
+  animation: driftSlow 38s linear infinite;
 }
+
+@keyframes driftSlow {
+  0%   { transform: translate(0,0) rotate(0deg); }
+  50%  { transform: translate(-12px, 18px) rotate(10deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+.glyph-1 { background-image: url("../images/glyph-one.png"); top: 12%; left: 18%; }
+.glyph-2 { background-image: url("../images/glyph-two.png"); top: 46%; left: 70%; }
+.glyph-3 { background-image: url("../images/glyph-three.png"); top: 78%; left: 25%; }
+.glyph-4 { background-image: url("../images/glyph-four.png"); top: 22%; left: 82%; }
+.glyph-5 { background-image: url("../images/glyph-five.png"); top: 65%; left: 10%; }
+.glyph-6 { background-image: url("../images/glyph-six.png"); top: 35%; left: 45%; }
 
 /* ----------------------------------------------------
-   MAGIC BLOCK (Other Magic Systems Page)
+   MAGIC BLOCK
 ---------------------------------------------------- */
 .magic-block {
   max-width: 900px;
@@ -664,4 +363,15 @@ body {
 .magic-block p {
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+/* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+.site-footer {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--primary-color);
+  border-radius: 8px;
 }
