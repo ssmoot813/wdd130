@@ -387,6 +387,15 @@ body {
 /* ----------------------------------------------------
    OTHER MAGIC SYSTEMS – SMOOTH MULTICOLOR RIBBONS
 ---------------------------------------------------- */
+/* ----------------------------------------------------
+   OTHER MAGIC SYSTEMS – SOFT ARCANE GLOW BACKGROUND
+---------------------------------------------------- */
+
+.other-magic {
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+  position: relative;
+}
 
 .investiture-overlay {
   position: fixed;
@@ -394,51 +403,43 @@ body {
   pointer-events: none;
   z-index: 0;
 
+  /* Soft glowing Cosmere-style light pools */
   background:
-    radial-gradient(circle at 20% 30%, rgba(191,165,227,0.2), transparent 60%),
-    radial-gradient(circle at 80% 40%, rgba(255,215,0,0.18), transparent 70%),
-    radial-gradient(circle at 30% 80%, rgba(107,46,145,0.22), transparent 65%),
-    radial-gradient(circle at 70% 75%, rgba(255,255,255,0.15), transparent 60%);
+    radial-gradient(circle at 20% 30%, rgba(255, 217, 2, 0.397) 0%, transparent 55%),
+    radial-gradient(circle at 78% 22%, rgba(176, 131, 240, 0.315) 0%, transparent 60%),
+    radial-gradient(circle at 30% 78%, rgba(107, 46, 145, 0.322) 0%, transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(255, 8, 8, 0.308) 0%, transparent 60%);
 
-  filter: blur(10px);
-  animation: investitureShift 40s ease-in-out infinite alternate;
   opacity: 0.65;
+  animation: softGlowShift 40s ease-in-out infinite alternate;
 }
 
-.investiture-overlay::before,
-.investiture-overlay::after {
-  content: "";
-  position: absolute;
-  inset: -100%;
-  mix-blend-mode: screen;
-
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255,215,0,0.15),
-      rgba(191,165,227,0.15),
-      rgba(107,46,145,0.15),
-      rgba(255,255,255,0.12),
-      rgba(107,46,145,0.17),
-      rgba(255,215,0,0.15)
-    );
-
-  background-size: 300% 300%;
-  animation: ribbonFlow 55s linear infinite;
-  opacity: 0.45;
+@keyframes softGlowShift {
+  0% {
+    filter: blur(0px) brightness(1);
+  }
+  50% {
+    filter: blur(1px) brightness(1.06);
+  }
+  100% {
+    filter: blur(2px) brightness(1.1);
+  }
 }
 
-.investiture-overlay::after {
-  animation-duration: 75s;
-  animation-direction: alternate-reverse;
-  opacity: 0.35;
+/* Enhance the separator glyph (unchanged) */
+.glyph-divider img {
+  width: 48px;
+  height: 48px;
+  margin: 0 1.2rem;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+  animation: glyphSparkle 2.4s ease-in-out infinite;
 }
 
-@keyframes investitureShift {
-  0%   { transform: translate3d(0, 0, 0); }
-  50%  { transform: translate3d(-5%, 3%, 0); }
-  100% { transform: translate3d(3%, -4%, 0); }
+@keyframes glyphSparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.15); }
 }
+
 
 @keyframes ribbonFlow {
   0%   { background-position: 0% 50%; }
