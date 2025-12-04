@@ -82,29 +82,38 @@ resizeNebula();
 window.addEventListener("resize", resizeNebula);
 
 const nebulaColors = [
-  "rgba(255, 217, 0, 0.17)",
-  "rgba(191, 165, 227, 0.20)",
-  "rgba(107, 46, 145, 0.22)",
-  "rgba(20, 220, 255, 0.16)"
+  "rgba(255, 217, 0, 0.14)",
+  "rgba(191, 165, 227, 0.16)",
+  "rgba(107, 46, 145, 0.18)",
+  "rgba(20, 220, 255, 0.12)"
+];
+
+const nebulaPositions = [
+  { x: 0.10, y: 0.40 },
+  { x: 0.15, y: 0.75 },
+  { x: 0.90, y: 0.30 },
+  { x: 0.85, y: 0.70 }
 ];
 
 function drawNebula() {
   nebCtx.clearRect(0, 0, nebulaCanvas.width, nebulaCanvas.height);
 
   nebulaColors.forEach((color, i) => {
+    const pos = nebulaPositions[i];
+
     const gradient = nebCtx.createRadialGradient(
-      nebulaCanvas.width * (0.2 + i * 0.2),
-      nebulaCanvas.height * (0.25 + i * 0.15),
-      60,
-      nebulaCanvas.width * (0.2 + i * 0.2),
-      nebulaCanvas.height * (0.25 + i * 0.15),
-      420
+      nebulaCanvas.width * pos.x,
+      nebulaCanvas.height * pos.y,
+      80,
+      nebulaCanvas.width * pos.x,
+      nebulaCanvas.height * pos.y,
+      430
     );
 
     gradient.addColorStop(0, color);
     gradient.addColorStop(1, "transparent");
 
-    nebCtx.globalAlpha = 0.6;
+    nebCtx.globalAlpha = 0.7;
     nebCtx.fillStyle = gradient;
     nebCtx.fillRect(0, 0, nebulaCanvas.width, nebulaCanvas.height);
   });
@@ -113,10 +122,10 @@ function drawNebula() {
 let nebulaShift = 0;
 
 function animateNebula() {
-  nebulaShift += 0.0004;
+  nebulaShift += 0.0005;
 
   nebCtx.setTransform(1, 0, 0, 1, 0, 0);
-  nebCtx.translate(Math.sin(nebulaShift) * 12, Math.cos(nebulaShift) * 12);
+  nebCtx.translate(Math.sin(nebulaShift) * 15, Math.cos(nebulaShift) * 15);
 
   drawNebula();
   requestAnimationFrame(animateNebula);
